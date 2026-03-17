@@ -1,0 +1,318 @@
+{
+  "common": {
+    "home": "홈",
+    "products": "제품",
+    "solutions": "솔루션",
+    "about": "회사 소개",
+    "news": "뉴스",
+    "contact": "연락처",
+    "learnMore": "자세히 알아보기",
+    "getQuote": "견적 요청",
+    "exploreProducts": "제품 탐색",
+    "viewAll": "모두 보기",
+    "submit": "제출",
+    "subscribe": "구독",
+    "download": "다운로드",
+    "details": "상세 정보"
+  },
+  "header": {
+    "trustedManufacturer": "전문 내시경 제조사",
+    "consultNow": "지금 상담",
+    "hotline": "13072150777",
+    "diagnostic": "4K 카메라 시스템",
+    "therapeutic": "광원",
+    "surgical": " insufflator",
+    "monitoring": "액세서리"
+  },
+  "hero": {
+    "tagline": "전문 내시경 제조사",
+    "title": "지능적 돌파구 · 정밀 최소 침습",
+    "subtitle": "인류 건강 수호의 핵심 역량이 되다",
+    "description": "Shanghai Shiyin Endoscope Co., Ltd.는 의료용 내시경의 연구, 개발, 생산 및 판매를 전문으로 하는高新技术企业입니다. 전 세계 의료 기관에 고품질의 최소 침습 수술 솔루션을 제공하여 모든 수술을 더욱 정밀하고 효율적으로 만들고자 합니다.",
+    "yearsExperience": "년 경험",
+    "patents": "특허",
+    "countriesServed": "개국 서비스"
+  },
+  "features": {
+    "title": "우리를 선택하는 이유",
+    "quality": {
+      "title": "품질 보증",
+      "description": "CE, ISO 및 기타 국제 인증을 받은 제품으로, 모든 생산 단계에서 엄격한 품질 관리を行います."
+    },
+    "global": {
+      "title": "글로벌 서비스",
+      "description": "전 세계 여러 국가 및 지역으로 제품을 수출하며 현지 지원을 제공합니다."
+    },
+    "support": {
+      "title": "빠른 대응",
+      "description": "모든 문제를 신속하게 해결하기 위한 전문 기술 지원 팀 있습니다."
+    },
+    "team": {
+      "title": "전문 팀",
+      "description": "제품 혁신을 위한 강력한 지원을 제공하는 경험 많은 연구 개발 팀 있습니다."
+    }
+  },
+  "products": {
+    "title": "제품 센터",
+    "subtitle": "고품질 내시경 시스템 솔루션",
+    "description": "저희는 다양한 부서의 최소 침습 수술 요구를 충족시키는 완전한 내시경 시스템 제품 라인을 제공합니다",
+    "learnMore": "자세히 알아보기",
+    "requestInfo": "정보 요청",
+    "categories": {
+      "diagnostic": "카메라 시스템",
+      "therapeutic": "광원",
+      "surgical": "insufflator",
+      "monitoring": "액세서리"
+    },
+    "items": {
+      "camera4k": {
+        "name": "4K 의료 내시경 카메라 시스템",
+        "category": "카메라 시스템",
+        "description": "선명하고 세밀한 시야를 제공하는先进的 4K Ultra HD 기술로, 다양한 부서 응용을 지원합니다.",
+        "features": ["4K Ultra HD", "와이드 다이나믹 레인지", "현실적인 색상 재현", "다양한 작업 모드"]
+      },
+      "ledlight": {
+        "name": "LED 의료 내시경 냉광원",
+        "category": "광원",
+        "description": "장수명의 안정적이고 균일한 조명을 제공하는 고휘도 LED 냉광원입니다.",
+        "features": ["LED 냉광원", "밝기 조절", "안정적인 색온도", "에너지 절약"]
+      },
+      "co2": {
+        "name": "CO2 insufflator",
+        "category": "insufflator",
+        "description": "복압을 정확하게 조절하여 수술 안전을 보장하는 안정적인 기복 환경을 제공합니다.",
+        "features": ["정밀한 압력 조절", "안전하고 신뢰할 수 있음", "작동简便", "다양한 모드"]
+      },
+      "irrigation": {
+        "name": "관류 펌프",
+        "category": "액세서리",
+        "description": "수술에 안정적인 액체 관류 압력을 제공하여 명확한 수술 시야를 보장합니다.",
+        "features": ["조절 가능한 유량", "안정적인 압력", "간편한 작동", "안전 보호"]
+      },
+      "suction": {
+        "name": "흡인 관류 펌프",
+        "category": "액세서리",
+        "description": "수술 중 자동으로 액체를 관류하고 흡인하여 수술 영역을 깨끗하게 유지합니다.",
+        "features": ["관류 흡인 일체형", "음압 조절", "고효율 여과", "저소음 설계"]
+      },
+      "monitor": {
+        "name": "의료 모니터",
+        "category": "디스플레이 장비",
+        "description": "본색을再現하는 전문 등급 의료 디스플레이로, 수술실의 높은 기준을 충족합니다.",
+        "features": ["고해상도 디스플레이", "정확한 색상", "풍부한 인터페이스", "다양한 크기"]
+      },
+      "cart": {
+        "name": "워크스테이션 카트",
+        "category": "액세서리",
+        "description": "내시경 시스템을 위해 특별히 설계된 이동식 작업台으로, 깔끔하고 아름답고 작동하기 쉽습니다.",
+        "features": ["유연한 이동", "다층 설계", "케이블 관리", "안정적이고 신뢰할 수 있음"]
+      }
+    }
+  },
+  "solutions": {
+    "title": "부서 솔루션",
+    "subtitle": "모든 부서의 최소 침습 수술 요구 충족",
+    "description": "저희는 다양한 부서에 전문 내시경 솔루션을 제공하여 최소 침습 수술을 더욱 정밀하고 효율적으로 만듭니다",
+    "departments": {
+      "general": {
+        "name": "일반 외과",
+        "description": "복강경 수술인 담낭 절제술, 맹장 절제술, 위장관 수술 등에 적용됩니다."
+      },
+      "thoracic": {
+        "name": "흉부 외과",
+        "description": "흉강경 수술인 폐엽 절제술, 식도 수술, 흉선 절제술 등에 적용됩니다."
+      },
+      "gynecology": {
+        "name": "산부인과",
+        "description": "자궁 근종 절제술, 난소囊肿 제거술, 자외임신 수술 등에 적용됩니다."
+      },
+      "ent": {
+        "name": "이비인후과",
+        "description": "부비동염 수술, 성대 용종 제거술, 이경 검사 등에 적용됩니다."
+      },
+      "orthopedics": {
+        "name": "정형외과",
+        "description": "관절경 수술,척추 최소 침습 수술 등에 적용됩니다."
+      },
+      "urology": {
+        "name": "비뇨기과",
+        "description": "신장 결석, 전립선 비대, 방광 종양 등 최소 침습 수술에 적용됩니다."
+      },
+      "proctology": {
+        "name": "항문 외과",
+        "description": "치치, 치루, 직장 용종 등 최소 침습 수술에 적용됩니다."
+      },
+      "aesthetic": {
+        "name": "미용 의학",
+        "description": "안면 rejuvenation, 주사 미용, 레이저 치료 등에 적용됩니다."
+      }
+    }
+  },
+  "about": {
+    "title": "회사 소개",
+    "subtitle": "세계적인 의료 내시igkeit 공급업체가 되는 것을 목표로 합니다",
+    "description": "Shanghai Shiyin Endoscope Co., Ltd.는 의료용 내시경 및 관련 장비의 연구, 개발, 생산 및 판매를 전문으로 하는高新技术企业입니다. '지능적 돌파구 · 정밀 최소 침습'을 핵심 가치관으로 전 세계 의료 기관에 고품질의 최소 침습 수술 솔루션을 제공하는 데 있습니다.",
+    "features": {
+      "manufacturing": {
+        "title": "先进 제조",
+        "description": "1만 등급 클린룸과先进的 생산 설비를 갖추고 GMP 표준을 엄격히 준수합니다."
+      },
+      "certification": {
+        "title": "품질 보증",
+        "description": "CE, ISO 및 기타 국제 인증을 받은 제품으로, 탁월하고 신뢰할 수 있는 품질을 보장합니다."
+      },
+      "global": {
+        "title": "글로벌 인력 배치",
+        "description": "제품이 전 세계 여러 국가 및 지역으로 수출되어 전 세계 의료 기관에 서비스합니다."
+      },
+      "team": {
+        "title": "전문 팀",
+        "description": "경험 많은 연구 개발 팀과 전문 기술 지원 팀이 지속적인 혁신을 이끌고 있습니다."
+      }
+    },
+    "timeline": {
+      "title": "발전 과정",
+      "2010": "회사 설립",
+      "2015": "CE 인증 획득",
+      "2018": "4K 내시경 시스템 출시",
+      "2020": "글로벌 고객 1,000곳 돌파",
+      "2024": "차세대 스마트 내시경 시스템 출시"
+    },
+    "stats": {
+      "years": "년 경험",
+      "patents": "특허",
+      "customers": "글로벌 고객",
+      "countries": "개국 서비스"
+    },
+    "vision": {
+      "title": "기업 비전",
+      "content": "인류 건강 수호의 핵심 역량이 되다"
+    }
+  },
+  "contact": {
+    "title": "연락처",
+    "subtitle": "언제든지 전문 상담 가능합니다",
+    "description": "질문이나 수요가 있으시면 언제든지 전문 팀이 도와드리겠습니다",
+    "form": {
+      "title": "메시지 보내기",
+      "name": "이름 *",
+      "namePlaceholder": "이름을 입력해 주세요",
+      "phone": "전화번호 *",
+      "phonePlaceholder": "전화번호를 입력해 주세요",
+      "email": "이메일",
+      "emailPlaceholder": "이메일을 입력해 주세요",
+      "industry": "업계",
+      "industryPlaceholder": "업계 선택",
+      "message": "메시지 *",
+      "messagePlaceholder": "요구를 설명해 주세요...",
+      "submit": "메시지 보내기",
+      "industries": {
+        "hospital": "병원",
+        "clinic": "클리닉",
+        "distributor": "유통업체",
+        "other": "기타"
+      }
+    },
+    "info": {
+      "hotline": {
+        "title": "상담热线",
+        "content": "13072150777",
+        "description": "월-금 9:00-18:00"
+      },
+      "phone": {
+        "title": "일반 전화",
+        "content": "021-58189111",
+        "description": "월-금 9:00-18:00"
+      },
+      "email": {
+        "title": "사업 문의",
+        "content": "shiyin@shshiyin.cn",
+        "description": "24시간 내 회신"
+      },
+      "address": {
+        "title": "주소",
+        "content": "상하이시 푸동 신구 하나 고로 9628번지 5-A동, 5-B동",
+        "description": "방문 환영"
+      },
+      "service": {
+        "title": "서비스 시간",
+        "content": "월-토",
+        "description": "9:00-20:00"
+      }
+    },
+    "cta": {
+      "title": "즉석 상담",
+      "description": "더 빠른 답변을 위해 아래 버튼을 클릭하여 WeChat을 추가하세요",
+      "button": "WeChat 추가"
+    },
+    "mapLoading": "지도 로딩 중..."
+  },
+  "footer": {
+    "newsletter": {
+      "title": "최신 뉴스 구독",
+      "description": "최신 제품 정보, 업계 동향 및 특별 혜택을 받아보세요",
+      "placeholder": "이메일 입력",
+      "button": "구독"
+    },
+    "products": "제품",
+    "company": "회사",
+    "support": "지원",
+    "legal": "법적 정보",
+    "productLinks": {
+      "camera4k": "4K 카메라 시스템",
+      "ledlight": "LED 냉광원",
+      "co2": "CO2 insufflator",
+      "irrigation": "관류 펌프",
+      "suction": "흡인 펌프",
+      "monitor": "의료 모니터",
+      "cart": "워크스테이션 카트"
+    },
+    "companyLinks": {
+      "about": "회사 소개",
+      "news": "뉴스",
+      "careers": "채용",
+      "contact": "연락처"
+    },
+    "supportLinks": {
+      "technical": "기술 지원",
+      "afterSales": "사후 서비스",
+      "downloads": "다운로드",
+      "faq": "자주 묻는 질문"
+    },
+    "legalLinks": {
+      "privacy": "개인정보 보호정책",
+      "terms": "서비스 약관",
+      "sitemap": "사이트맵"
+    },
+    "contactInfo": {
+      "phone": "13072150777",
+      "phone2": "021-58189111",
+      "email": "shiyin@shshiyin.cn",
+      "address": "상하이시 푸동 신구 하나 고로 9628번지 5-A동, 5-B동"
+    },
+    "copyright": "© 2024 Shanghai Shiyin Endoscope Co., Ltd. All rights reserved."
+  },
+  "seo": {
+    "title": "Shanghai Shiyin 내시경 - 전문 4K 의료 내시경 카메라 시스템 제조사",
+    "description": "Shanghai Shiyin Endoscope Co., Ltd.는 4K 의료 내시경 카메라 시스템, LED 냉광원, CO2 insufflator 및 기타 최소 침습 수술 장비의 연구, 개발, 생산 및 판매를 전문으로 하는高新技术企业입니다. CE, ISO 인증 제품으로, 상담 및 협력을 환영합니다.",
+    "keywords": "내시경,4K 내시경,의료 내시경,카메라 시스템,LED 냉광원,CO2 insufflator,최소 침습 수술,복강경,흉강경,의료 장비"
+  },
+  "page": {
+    "products": {
+      "title": "제품 센터",
+      "description": "저희는 다양한 부서의 최소 침습 수술 요구를 충족시키는 완전한 내시경 시스템 제품 라인을 제공합니다"
+    },
+    "about": {
+      "title": "회사 소개",
+      "description": "Shanghai Shiyin Endoscope의 발전 역사, 기업 문화 및 핵심 가치관에 대해 알아보세요"
+    },
+    "contact": {
+      "title": "연락처",
+      "description": "언제든지 전문 상담 가능합니다. 협력 기다리겠습니다"
+    },
+    "solutions": {
+      "title": "부서 솔루션",
+      "description": "다양한 부서에 전문 내시경 솔루션을 제공합니다"
+    }
+  }
+}

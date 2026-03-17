@@ -1,0 +1,318 @@
+{
+  "common": {
+    "home": "Inicio",
+    "products": "Productos",
+    "solutions": "Soluciones",
+    "about": "Nosotros",
+    "news": "Noticias",
+    "contact": "Contacto",
+    "learnMore": "Más Información",
+    "getQuote": "Obtener Cotización",
+    "exploreProducts": "Explorar Productos",
+    "viewAll": "Ver Todo",
+    "submit": "Enviar",
+    "subscribe": "Suscribirse",
+    "download": "Descargar",
+    "details": "Detalles"
+  },
+  "header": {
+    "trustedManufacturer": "Fabricante Profesional de Endoscopios",
+    "consultNow": "Consultar Ahora",
+    "hotline": "13072150777",
+    "diagnostic": "Sistema de Cámara 4K",
+    "therapeutic": "Fuente de Luz",
+    "surgical": "Insuflador",
+    "monitoring": "Accesorios"
+  },
+  "hero": {
+    "tagline": "Fabricante Profesional de Endoscopios",
+    "title": "Avance Inteligente · Mínimamente Invasivo Preciso",
+    "subtitle": "Convirtiéndose en la Fuerza Central en la Protección de la Salud Humana",
+    "description": "Shanghai Shiyin Endoscope Co., Ltd. es una empresa de alta tecnología especializada en I+D, producción y venta de endoscopios médicos. Nos comprometemos a proporcionar soluciones de cirugía mínimamente invasiva de alta calidad a instituciones de salud en todo el mundo, haciendo cada cirugía más precisa y eficiente.",
+    "yearsExperience": "Años de Experiencia",
+    "patents": "Patentes",
+    "countriesServed": "Países Atendidos"
+  },
+  "features": {
+    "title": "Por Qué Elegirnos",
+    "quality": {
+      "title": "Garantía de Calidad",
+      "description": "Productos certificados por CE, ISO y otras autoridades internacionales, con control riguroso en cada etapa de producción."
+    },
+    "global": {
+      "title": "Servicio Global",
+      "description": "Productos exportados a múltiples países y regiones del mundo, proporcionando soporte local para usted."
+    },
+    "support": {
+      "title": "Respuesta Rápida",
+      "description": "Equipo de soporte técnico profesional para resolver rápidamente todos sus problemas."
+    },
+    "team": {
+      "title": "Equipo Profesional",
+      "description": "Equipo de I+D experimentado que proporciona un fuerte soporte para la innovación de productos."
+    }
+  },
+  "products": {
+    "title": "Centro de Productos",
+    "subtitle": "Soluciones de Sistema de Endoscopio de Alta Calidad",
+    "description": "Proporcionamos una línea completa de productos del sistema de endoscopio para satisfacer las necesidades de cirugía mínimamente invasiva de diferentes departamentos",
+    "learnMore": "Más Información",
+    "requestInfo": "Solicitar Información",
+    "categories": {
+      "diagnostic": "Sistema de Cámara",
+      "therapeutic": "Fuente de Luz",
+      "surgical": "Insuflador",
+      "monitoring": "Accesorios"
+    },
+    "items": {
+      "camera4k": {
+        "name": "Sistema de Cámara Endoscópica Médica 4K",
+        "category": "Sistema de Cámara",
+        "description": "Adoptando tecnología avanzada 4K ultra alta definición para proporcionar visión quirúrgica clara y delicada, soportando múltiples aplicaciones departamentales.",
+        "features": ["4K Ultra HD", "Amplio Rango Dinámico", "Reproducción de Color Real", "Múltiples Modos de Trabajo"]
+      },
+      "ledlight": {
+        "name": "Fuente de Luz Fría Endoscópica Médica LED",
+        "category": "Fuente de Luz",
+        "description": "Fuente de luz fría LED de alta intensidad que proporciona iluminación estable y uniforme con larga vida útil.",
+        "features": ["Luz Fría LED", "Brillo Ajustable", "Temperatura de Color Estable", "Ahorro de Energía"]
+      },
+      "co2": {
+        "name": "Insuflador de CO2",
+        "category": "Insuflador",
+        "description": "Controla precisamente la presión abdominal, proporcionando un entorno de neumoperitoneo estable para garantizar la seguridad quirúrgica.",
+        "features": ["Control de Presión Preciso", "Seguro y Confiable", "Operación Fácil", "Múltiples Modos"]
+      },
+      "irrigation": {
+        "name": "Bomba de Irrigación",
+        "category": "Accesorios",
+        "description": "Proporciona presión de irrigación líquida estable para cirugía, garantizando visión quirúrgica clara.",
+        "features": ["Flujo Controlable", "Presión Estable", "Operación Simple", "Protección de Seguridad"]
+      },
+      "suction": {
+        "name": "Bomba de Succión e Irrigación",
+        "category": "Accesorios",
+        "description": "Logra irrigación líquida automática y succión durante la cirugía, manteniendo el campo quirúrgico limpio.",
+        "features": ["Integración de Irrigación y Succión", "Presión Negativa Ajustable", "Filtración de Alta Eficiencia", "Diseño Silencioso"]
+      },
+      "monitor": {
+        "name": "Monitor Médico",
+        "category": "Equipo de Visualización",
+        "description": "Pantalla médica de nivel profesional que restaura colores verdaderos, cumpliendo con los altos estándares de los quirófanos.",
+        "features": ["Visualización de Alta Resolución", "Color Preciso", "Interfaces Ricas", "Múltiples Tamaños"]
+      },
+      "cart": {
+        "name": "Carro de Estación de Trabajo",
+        "category": "Accesorios",
+        "description": "Mesa de trabajo móvil especialmente diseñada para sistemas de endoscopio, limpia y hermosa, fácil de operar.",
+        "features": ["Movimiento Flexible", "Diseño Multicapa", "Gestión de Cables", "Estable y Confiable"]
+      }
+    }
+  },
+  "solutions": {
+    "title": "Soluciones Departamentales",
+    "subtitle": "Satisfaciendo Todas las Necesidades de Cirugía Mínimamente Invasiva",
+    "description": "Proporcionamos soluciones profesionales de endoscopio para diferentes departamentos, haciendo la cirugía mínimamente invasiva más precisa y eficiente",
+    "departments": {
+      "general": {
+        "name": "Cirugía General",
+        "description": "Aplicable a cirugías laparoscópicas como colecistectomía, apendicectomía y cirugía gastrointestinal."
+      },
+      "thoracic": {
+        "name": "Cirugía Torácica",
+        "description": "Aplicable a cirugías toracoscópicas como lobectomía, cirugía esofágica y timectomía."
+      },
+      "gynecology": {
+        "name": "Ginecología",
+        "description": "Aplicable a miomectomía, extirpación de quistes ováricos, cirugía de embarazo ectópico y más."
+      },
+      "ent": {
+        "name": "Otorrinolaringología",
+        "description": "Aplicable a cirugía de sinusitis, extirpación de pólipos vocales, endoscopia auricular y más."
+      },
+      "orthopedics": {
+        "name": "Ortopedia",
+        "description": "Aplicable a cirugía artroscópica, cirugía de columna mínimamente invasiva y más."
+      },
+      "urology": {
+        "name": "Urología",
+        "description": "Aplicable a cirugías mínimamente invasivas como cálculos renales, hiperplasia prostática y tumores de vejiga."
+      },
+      "proctology": {
+        "name": "Proctología",
+        "description": "Aplicable a cirugías mínimamente invasivas para hemorroides, fístula anal, pólipos rectales y más."
+      },
+      "aesthetic": {
+        "name": "Medicina Estética",
+        "description": "Aplicable a rejuvenecimiento facial, estética inyectable, tratamiento láser y más."
+      }
+    }
+  },
+  "about": {
+    "title": "Nosotros",
+    "subtitle": "Comprometidos a Convertirse en un Proveedor Líder Global de Endoscopios Médicos",
+    "description": "Shanghai Shiyin Endoscope Co., Ltd. es una empresa de alta tecnología especializada en I+D, producción y venta de endoscopios médicos y equipos relacionados. Con 'Avance Inteligente · Mínimamente Invasivo Preciso' como nuestro concepto central, nos comprometemos a proporcionar soluciones de cirugía mínimamente invasiva de alta calidad a instituciones de salud en todo el mundo.",
+    "features": {
+      "manufacturing": {
+        "title": "Fabricación Avanzada",
+        "description": "Equipados con salas limpias de clase 10,000 y equipos de producción avanzados, siguiendo estrictamente los estándares GMP."
+      },
+      "certification": {
+        "title": "Garantía de Calidad",
+        "description": "Productos certificados por CE, ISO y otras autoridades internacionales para calidad excepcional y confiable."
+      },
+      "global": {
+        "title": "Presencia Global",
+        "description": "Productos exportados a múltiples países y regiones del mundo, atendiendo instituciones de salud a nivel mundial."
+      },
+      "team": {
+        "title": "Equipo Profesional",
+        "description": "Equipo de I+D experimentado y equipo de soporte técnico profesional, impulsando la innovación continua."
+      }
+    },
+    "timeline": {
+      "title": "Nuestra Trayectoria",
+      "2010": "Fundación de la Empresa",
+      "2015": "Certificación CE Obtenida",
+      "2018": "Sistema de Endoscopio 4K Lanzado",
+      "2020": "Clientes Globales Exceden 1,000",
+      "2024": "Lanzamiento del Sistema de Endoscopio Inteligente de Próxima Generación"
+    },
+    "stats": {
+      "years": "Años de Experiencia",
+      "patents": "Patentes",
+      "customers": "Clientes Globales",
+      "countries": "Países Atendidos"
+    },
+    "vision": {
+      "title": "Visión Corporativa",
+      "content": "Convirtiéndose en la Fuerza Central en la Protección de la Salud Humana"
+    }
+  },
+  "contact": {
+    "title": "Contáctenos",
+    "subtitle": "Consultoría Profesional Disponible en Cualquier Momento",
+    "description": "Si tiene alguna pregunta o necesidad, nuestro equipo profesional está listo para servirle",
+    "form": {
+      "title": "Enviar Mensaje",
+      "name": "Su Nombre *",
+      "namePlaceholder": "Por favor ingrese su nombre",
+      "phone": "Teléfono *",
+      "phonePlaceholder": "Por favor ingrese su teléfono",
+      "email": "Correo Electrónico",
+      "emailPlaceholder": "Por favor ingrese su correo",
+      "industry": "Industria",
+      "industryPlaceholder": "Seleccione su industria",
+      "message": "Mensaje *",
+      "messagePlaceholder": "Por favor describa sus necesidades...",
+      "submit": "Enviar Mensaje",
+      "industries": {
+        "hospital": "Hospital",
+        "clinic": "Clínica",
+        "distributor": "Distribuidor",
+        "other": "Otro"
+      }
+    },
+    "info": {
+      "hotline": {
+        "title": "Línea Directa",
+        "content": "13072150777",
+        "description": "Lun-Vie 9:00-18:00"
+      },
+      "phone": {
+        "title": "Teléfono Fijo",
+        "content": "021-58189111",
+        "description": "Lun-Vie 9:00-18:00"
+      },
+      "email": {
+        "title": "Consulta de Negocios",
+        "content": "shiyin@shshiyin.cn",
+        "description": "Respuesta en 24 horas"
+      },
+      "address": {
+        "title": "Dirección",
+        "content": "Edificio 5-A y 5-B, Nº 9628, Autopista Hunan, Área Nueva de Pudong, Shanghái",
+        "description": "Visitas bienvenidas"
+      },
+      "service": {
+        "title": "Horario de Atención",
+        "content": "Lun-Sáb",
+        "description": "9:00-20:00"
+      }
+    },
+    "cta": {
+      "title": "Consulta Instantánea",
+      "description": "Haga clic en el botón de abajo para agregar WeChat para una respuesta más rápida",
+      "button": "Agregar WeChat"
+    },
+    "mapLoading": "Cargando mapa..."
+  },
+  "footer": {
+    "newsletter": {
+      "title": "Suscríbase a las Últimas Noticias",
+      "description": "Obtenga las últimas informaciónes de productos, tendencias de la industria y ofertas especiales",
+      "placeholder": "Ingrese su correo",
+      "button": "Suscribirse"
+    },
+    "products": "Productos",
+    "company": "Empresa",
+    "support": "Soporte",
+    "legal": "Legal",
+    "productLinks": {
+      "camera4k": "Sistema de Cámara 4K",
+      "ledlight": "Fuente de Luz Fría LED",
+      "co2": "Insuflador de CO2",
+      "irrigation": "Bomba de Irrigación",
+      "suction": "Bomba de Succión",
+      "monitor": "Monitor Médico",
+      "cart": "Carro de Estación"
+    },
+    "companyLinks": {
+      "about": "Nosotros",
+      "news": "Noticias",
+      "careers": "Carreras",
+      "contact": "Contacto"
+    },
+    "supportLinks": {
+      "technical": "Soporte Técnico",
+      "afterSales": "Servicio Post-Venta",
+      "downloads": "Descargas",
+      "faq": "Preguntas Frecuentes"
+    },
+    "legalLinks": {
+      "privacy": "Política de Privacidad",
+      "terms": "Términos de Servicio",
+      "sitemap": "Mapa del Sitio"
+    },
+    "contactInfo": {
+      "phone": "13072150777",
+      "phone2": "021-58189111",
+      "email": "shiyin@shshiyin.cn",
+      "address": "Edificio 5-A y 5-B, Nº 9628, Autopista Hunan, Área Nueva de Pudong, Shanghái"
+    },
+    "copyright": "© 2024 Shanghai Shiyin Endoscope Co., Ltd. Todos los derechos reservados."
+  },
+  "seo": {
+    "title": "Shanghai Shiyin Endoscopio - Fabricante Profesional de Sistema de Cámara Endoscópica Médica 4K",
+    "description": "Shanghai Shiyin Endoscope Co., Ltd. es una empresa de alta tecnología especializada en I+D, producción y venta de sistemas de cámara endoscópica médica 4K, fuentes de luz fría LED, insufladores de CO2 y otros equipos de cirugía mínimamente invasiva. Productos certificados por CE e ISO, bienvenidas consultas y cooperaciones.",
+    "keywords": "endoscopio,endoscopio 4K,endoscopio médico,sistema de cámara,fuente de luz fría LED,insuflador de CO2,cirugía mínimamente invasiva,laparoscopia,toracoscopia,equipo médico"
+  },
+  "page": {
+    "products": {
+      "title": "Centro de Productos",
+      "description": "Proporcionamos una línea completa de productos del sistema de endoscopio para satisfacer las necesidades de cirugía mínimamente invasiva de diferentes departamentos"
+    },
+    "about": {
+      "title": "Nosotros",
+      "description": "Conozca la historia de desarrollo, cultura corporativa y valores fundamentales de Shanghai Shiyin Endoscope"
+    },
+    "contact": {
+      "title": "Contacto",
+      "description": "Consultoría profesional disponible en cualquier momento. Esperamos cooperar con usted"
+    },
+    "solutions": {
+      "title": "Soluciones Departamentales",
+      "description": "Proporcionando soluciones profesionales de endoscopio para diferentes departamentos"
+    }
+  }
+}

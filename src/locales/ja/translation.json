@@ -1,0 +1,318 @@
+{
+  "common": {
+    "home": "ホーム",
+    "products": "製品",
+    "solutions": "ソリューション",
+    "about": "会社概要",
+    "news": "ニュース",
+    "contact": "お問い合わせ",
+    "learnMore": "詳細を見る",
+    "getQuote": "見積もりを取得",
+    "exploreProducts": "製品を探す",
+    "viewAll": "すべて見る",
+    "submit": "送信",
+    "subscribe": "購読",
+    "download": "ダウンロード",
+    "details": "詳細"
+  },
+  "header": {
+    "trustedManufacturer": "プロフェッショナル内視鏡メーカー",
+    "consultNow": "今すぐ相談",
+    "hotline": "13072150777",
+    "diagnostic": "4Kカメラシステム",
+    "therapeutic": "光源",
+    "surgical": "インスフラクター",
+    "monitoring": "アクセサリー"
+  },
+  "hero": {
+    "tagline": "プロフェッショナル内視鏡メーカー",
+    "title": "スマートブレークスルー · 精密低侵襲",
+    "subtitle": "人々の健康を守る中核的な力になる",
+    "description": "上海世音内視鏡有限公司は、医療用内視鏡の研究開発・生産・販売を専門とするハイテク企業です。世界中の医療機関に高品質な低侵襲手術ソリューションを提供し、すべての手術をより正確かつ効率的にすることを使命としています。",
+    "yearsExperience": "年の経験",
+    "patents": "特許",
+    "countriesServed": "サービス提供国"
+  },
+  "features": {
+    "title": "選ばれる理由",
+    "quality": {
+      "title": "品質保証",
+      "description": "CE、ISOおよびその他の国際的な認証を受けた製品で、すべての生産段階で厳格な品質管理を行っています。"
+    },
+    "global": {
+      "title": "グローバルサービス",
+      "description": "世界中の多くの国や地域に製品を輸出 地元のサポートを提供します。"
+    },
+    "support": {
+      "title": "迅速な対応",
+      "description": "すべての問題を迅速に解決するための専門的な技術サポートチームがあります。"
+    },
+    "team": {
+      "title": "プロフェッショナルチーム",
+      "description": "製品イノベーションに強力なサポートを提供する経験豊富な研究開発チームがあります。"
+    }
+  },
+  "products": {
+    "title": "製品センター",
+    "subtitle": "高品質内視鏡システムソリューション",
+    "description": "さまざまな部門の低侵襲手術のニーズを満たす完全な内視鏡システム製品ラインを提供します",
+    "learnMore": "詳細を見る",
+    "requestInfo": "情報をリクエスト",
+    "categories": {
+      "diagnostic": "カメラシステム",
+      "therapeutic": "光源",
+      "surgical": "インスフラクター",
+      "monitoring": "アクセサリー"
+    },
+    "items": {
+      "camera4k": {
+        "name": "4K医用内視鏡カメラシステム",
+        "category": "カメラシステム",
+        "description": "鮮明で詳細な手術視野を提供する先進的な4K Ultra HD技術を採用し、多様な部門応用をサポートします。",
+        "features": ["4K Ultra HD", "ワイドダイナミックレンジ", "リアルな色再現", "複数動作モード"]
+      },
+      "ledlight": {
+        "name": "LED医用内視鏡冷光源",
+        "category": "光源",
+        "description": "長寿命で安定均一な照明を提供する高輝度LED冷光源です。",
+        "features": ["LED冷光", "明るさ調整可能", "色温度安定", "省エネ"]
+      },
+      "co2": {
+        "name": "CO2インスフラクター",
+        "category": "インスフラクター",
+        "description": "腹腔内圧を正確に制御し、手術の安全を保証する安定した気腹環境を提供します。",
+        "features": ["正確な圧力制御", "安全で信頼性が高い", "簡単な操作", "複数モード"]
+      },
+      "irrigation": {
+        "name": "灌流ポンプ",
+        "category": "アクセサリー",
+        "description": "手術に安定した灌流圧力を提供し、明確な手術視野を保証します。",
+        "features": ["流量制御可能", "圧力安定", "簡単な操作", "安全保護"]
+      },
+      "suction": {
+        "name": "吸引灌流ポンプ",
+        "category": "アクセサリー",
+        "description": "手術中に自動灌流と吸引を行い、手術野を清潔に保ちます。",
+        "features": ["灌流吸引一体型", "陰圧調整可能", "高効率ろ過", "静音設計"]
+      },
+      "monitor": {
+        "name": "医用モニター",
+        "category": "表示装置",
+        "description": "本来の色を再現するプロフェッショナルグレードの医用ディスプレイで、オペ室の高度な基準を満たします。",
+        "features": ["高解像度表示", "正確な色", "豊富なインターフェース", "複数サイズ"]
+      },
+      "cart": {
+        "name": "ワークステーショカート",
+        "category": "アクセサリー",
+        "description": "内視鏡システムのために特別に設計された移動式ワークベンチで、綺麗で美观、操作しやすいです。",
+        "features": ["柔軟な移動", "多层設計", "ケーブル管理", "安定信頼性"]
+      }
+    }
+  },
+  "solutions": {
+    "title": "部門ソリューション",
+    "subtitle": "すべての低侵襲手術ニーズに対応",
+    "description": "さまざまな部門にプロフェッショナルな内視鏡ソリューションを提供し、低侵襲手術をより正確かつ効率的にします",
+    "departments": {
+      "general": {
+        "name": "一般外科",
+        "description": "胆嚢摘出術、虫垂切除術、胃腸外科手術などの腹腔鏡外科手術に適用。"
+      },
+      "thoracic": {
+        "name": "胸部外科",
+        "description": "肺葉切除術、食道外科、胸腺切除術などの胸腔鏡外科手術に適用。"
+      },
+      "gynecology": {
+        "name": "産科",
+        "description": "筋腫切除術、卵巣嚢腫摘出術、異所性妊娠手術などに適用。"
+      },
+      "ent": {
+        "name": "耳鼻科",
+        "description": "副鼻腔炎手術、声帯ポリープ切除術、耳鏡検査などに適用。"
+      },
+      "orthopedics": {
+        "name": "整形外科",
+        "description": "関節鏡外科、脊柱低侵襲手術などに適用。"
+      },
+      "urology": {
+        "name": "泌尿器科",
+        "description": "腎結石、前立腺肥大、膀胱腫瘍などの低侵襲手術に適用。"
+      },
+      "proctology": {
+        "name": "肛門外科",
+        "description": "痔、核、直腸ポリープなどの低侵襲手術に適用。"
+      },
+      "aesthetic": {
+        "name": "美容外科",
+        "description": " Facial rejuvenation、注入美容、レーザー治療などに適用。"
+      }
+    }
+  },
+  "about": {
+    "title": "会社概要",
+    "subtitle": "世界的な医療内視鏡サプライヤーのリーダーになることに尽力",
+    "description": "上海世音内視鏡有限公司は、医療用内視鏡および関連機器の研究開発・生産・販売を専門とするハイテク企業です。「スマートブレークスルー · 精密低侵襲」をコアコンセプトとして、世界中の医療機関に高品質な低侵襲手術ソリューションを提供しています。",
+    "features": {
+      "manufacturing": {
+        "title": "先進的な製造",
+        "description": "10,000クラスクリーンルームと先進的な生産設備を備え、GMP基準を厳守。"
+      },
+      "certification": {
+        "title": "品質保証",
+        "description": "CE、ISOおよびその他の国際認証を受けた製品で、卓越した信頼できる品質を保証。"
+      },
+      "global": {
+        "title": "グローバル展開",
+        "description": "世界中の多くの国や地域に製品を輸出 地元の医療機関にサービスを提供。"
+      },
+      "team": {
+        "title": "プロフェッショナルチーム",
+        "description": "経験豊富な研究開発チームと専門的な技術サポートチームがあり、継続的なイノベーションを推進。"
+      }
+    },
+    "timeline": {
+      "title": "私たちの歩み",
+      "2010": "会社設立",
+      "2015": "CE認証取得",
+      "2018": "4K内視鏡システム発売",
+      "2020": "グローバル顧客1,000社突破",
+      "2024": "次世代スマート内視鏡システム発売"
+    },
+    "stats": {
+      "years": "年の経験",
+      "patents": "特許",
+      "customers": "グローバル顧客",
+      "countries": "サービス提供国"
+    },
+    "vision": {
+      "title": "企業ビジョン",
+      "content": "人々の健康を守る中核的な力になる"
+    }
+  },
+  "contact": {
+    "title": "お問い合わせ",
+    "subtitle": "プロフェッショナルなコンサルティングをいつでも提供",
+    "description": "ご質問やご要望がございましたら、専門チームがお手伝いします",
+    "form": {
+      "title": "メッセージを送信",
+      "name": "お名前 *",
+      "namePlaceholder": "お名前を入力してください",
+      "phone": "電話番号 *",
+      "phonePlaceholder": "電話番号を入力してください",
+      "email": "メールアドレス",
+      "emailPlaceholder": "メールアドレスを入力してください",
+      "industry": "業種",
+      "industryPlaceholder": "業種を選択",
+      "message": "メッセージ *",
+      "messagePlaceholder": "ご要望をお描述しください...",
+      "submit": "メッセージを送信",
+      "industries": {
+        "hospital": "病院",
+        "clinic": "クリニック",
+        "distributor": "ディストリビューター",
+        "other": "その他"
+      }
+    },
+    "info": {
+      "hotline": {
+        "title": "ホットライン",
+        "content": "13072150777",
+        "description": "月-金 9:00-18:00"
+      },
+      "phone": {
+        "title": "固定電話",
+        "content": "021-58189111",
+        "description": "月-金 9:00-18:00"
+      },
+      "email": {
+        "title": "ビジネスお問い合わせ",
+        "content": "shiyin@shshiyin.cn",
+        "description": "24時間以内にご返答"
+      },
+      "address": {
+        "title": "住所",
+        "content": "中国上海市浦東新区沪南公路9628号5-A棟、5-B棟",
+        "description": "ご訪問歓迎"
+      },
+      "service": {
+        "title": "サービス時間",
+        "content": "月-土",
+        "description": "9:00-20:00"
+      }
+    },
+    "cta": {
+      "title": "今すぐ相談",
+      "description": "より迅速な回答を得るには、下のボタンをクリックしてWeChatを追加してください",
+      "button": "WeChatを追加"
+    },
+    "mapLoading": "マップ読み込み中..."
+  },
+  "footer": {
+    "newsletter": {
+      "title": "最新ニュースを購読",
+      "description": "最新の製品情報、業界動向、特別なオファーを受け取る",
+      "placeholder": "メールアドレスを入力",
+      "button": "購読"
+    },
+    "products": "製品",
+    "company": "会社",
+    "support": "サポート",
+    "legal": "法的情報",
+    "productLinks": {
+      "camera4k": "4Kカメラシステム",
+      "ledlight": "LED冷光源",
+      "co2": "CO2インスフラクター",
+      "irrigation": "灌流ポンプ",
+      "suction": "吸引ポンプ",
+      "monitor": "医用モニター",
+      "cart": "ワークステーショカート"
+    },
+    "companyLinks": {
+      "about": "会社概要",
+      "news": "ニュース",
+      "careers": "採用情報",
+      "contact": "お問い合わせ"
+    },
+    "supportLinks": {
+      "technical": "技術サポート",
+      "afterSales": "アフターサービス",
+      "downloads": "ダウンロード",
+      "faq": "よくある質問"
+    },
+    "legalLinks": {
+      "privacy": "プライバシーポリシー",
+      "terms": "利用規約",
+      "sitemap": "サイトマップ"
+    },
+    "contactInfo": {
+      "phone": "13072150777",
+      "phone2": "021-58189111",
+      "email": "shiyin@shshiyin.cn",
+      "address": "中国上海市浦東新区沪南公路9628号5-A棟、5-B棟"
+    },
+    "copyright": "© 2024 上海世音内視鏡有限公司. All rights reserved."
+  },
+  "seo": {
+    "title": "上海世音内視鏡 - プロフェッショナル4K医用内視鏡カメラシステムメーカー",
+    "description": "上海世音内視鏡有限公司は、4K医用内視鏡カメラシステム、LED冷光源、CO2インスフラクターおよびその他の低侵襲手術機器の研究開発・生産・販売を専門とするハイテク企業です。CE、ISO認証製品で、相談・コラボレーション歓迎。",
+    "keywords": "内視鏡,4K内視鏡,医療用内視鏡,カメラシステム,LED冷光源,CO2インスフラクター,低侵襲手術,腹腔鏡,胸腔鏡,医療機器"
+  },
+  "page": {
+    "products": {
+      "title": "製品センター",
+      "description": "さまざまな部門の低侵襲手術のニーズを満たす完全な内視鏡システム製品ラインを提供します"
+    },
+    "about": {
+      "title": "会社概要",
+      "description": "上海世音内視鏡の発展歴史、企業文化、核心的価値観についてご紹介します"
+    },
+    "contact": {
+      "title": "お問い合わせ",
+      "description": "プロフェッショナルなコンサルティングをいつでも提供。コラボレーションをお楽しみください"
+    },
+    "solutions": {
+      "title": "部門ソリューション",
+      "description": "さまざまな部門にプロフェッショナルな内視鏡ソリューションを提供"
+    }
+  }
+}
