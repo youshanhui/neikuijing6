@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[user]
+	name = youshanhui
+	email = youshanhui@example.com
+[remote "origin"]
+	url = https://youshanhui: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@github.com/youshanhui/youshanhui.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
