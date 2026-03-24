@@ -190,6 +190,10 @@
       "content": "成为守护人类健康的核心力量"
     }
   },
+  "history": {
+    "title": "公司历程",
+    "description": "见证我们的成长与成就"
+  },
   "contact": {
     "title": "联系我们",
     "subtitle": "随时为您提供专业咨询服务",
@@ -326,5 +330,56 @@
     "backToProducts": "返回产品列表",
     "contactCTA": "了解更多产品信息",
     "contactDescription": "我们的专业团队随时为您提供详细的产品咨询和技术支持"
+  },
+  "products": {
+    "title": "产品中心",
+    "subtitle": "专业内窥镜设备",
+    "description": "我们提供完整的内窥镜系统产品线，满足不同科室的微创手术需求",
+    "learnMore": "了解更多",
+    "requestInfo": "立即咨询",
+    "items": {
+      "camera4k": {
+        "name": "4K超高清摄像系统",
+        "category": "摄像系统",
+        "description": "采用先进的4K超高清成像技术，提供清晰细腻的手术视野",
+        "features": ["4K超高清分辨率", "色彩还原真实", "低延迟传输", "智能对焦"]
+      },
+      "ledlight": {
+        "name": "LED冷光源",
+        "category": "光源系统",
+        "description": "高效节能的LED冷光源，提供稳定均匀的照明",
+        "features": ["冷光源不发热", "亮度可调节", "使用寿命长", "色温可调"]
+      },
+      "co2": {
+        "name": "CO2气腹机",
+        "category": "气腹系统",
+        "description": "精确控制腹腔压力，提供稳定的手术操作空间",
+        "features": ["压力精确控制", "自动安全监测", "多种模式可选", "低噪音设计"]
+      },
+      "irrigation": {
+        "name": "灌注泵",
+        "category": "灌注系统",
+        "description": "精确控制液体流量，确保手术视野清晰",
+        "features": ["流量精确控制", "多种液体兼容", "智能报警系统", "操作简便"]
+      },
+      "suction": {
+        "name": "负压吸引器",
+        "category": "吸引系统",
+        "description": "高效可靠的负压吸引设备，保持手术区域清洁",
+        "features": ["吸力可调节", "噪音低", "易于清洁", "安全可靠"]
+      },
+      "monitor": {
+        "name": "医用监视器",
+        "category": "显示系统",
+        "description": "高清晰度医用监视器，呈现完美图像",
+        "features": ["高分辨率显示", "广视角设计", "护眼模式", "多种输入接口"]
+      },
+      "cart": {
+        "name": "内镜手术推车",
+        "category": "配套设备",
+        "description": "模块化设计推车，集成所有内镜设备",
+        "features": ["模块化设计", "移动灵活", "布线整洁", "可定制"]
+      }
+    }
   }
 }

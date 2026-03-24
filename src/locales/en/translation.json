@@ -190,6 +190,10 @@
       "content": "Becoming the Core Force in Protecting Human Health"
     }
   },
+  "history": {
+    "title": "Company History",
+    "description": "Witness Our Growth and Achievements"
+  },
   "contact": {
     "title": "Contact Us",
     "subtitle": "Professional Consulting Service Anytime",
@@ -326,5 +330,56 @@
     "backToProducts": "Back to Products",
     "contactCTA": "Learn More About This Product",
     "contactDescription": "Our professional team is always ready to provide you with detailed product information and technical support"
+  },
+  "products": {
+    "title": "Product Center",
+    "subtitle": "Professional Endoscopy Equipment",
+    "description": "We provide a complete endoscope system product line to meet the minimally invasive surgery needs of different departments",
+    "learnMore": "Learn More",
+    "requestInfo": "Request Info",
+    "items": {
+      "camera4k": {
+        "name": "4K Ultra HD Camera System",
+        "category": "Camera Systems",
+        "description": "Advanced 4K ultra-high-definition imaging technology provides clear and detailed surgical views",
+        "features": ["4K Ultra HD Resolution", "Realistic Color Reproduction", "Low Latency Transmission", "Smart Focus"]
+      },
+      "ledlight": {
+        "name": "LED Cold Light Source",
+        "category": "Light Source Systems",
+        "description": "Energy-efficient LED cold light source provides stable and uniform illumination",
+        "features": ["Cold Light No Heat", "Adjustable Brightness", "Long Service Life", "Adjustable Color Temperature"]
+      },
+      "co2": {
+        "name": "CO2 Insufflator",
+        "category": "Insufflation Systems",
+        "description": "Precisely controls abdominal pressure providing stable surgical workspace",
+        "features": ["Precise Pressure Control", "Automatic Safety Monitoring", "Multiple Modes Available", "Low Noise Design"]
+      },
+      "irrigation": {
+        "name": "Irrigation Pump",
+        "category": "Irrigation Systems",
+        "description": "Precisely controls fluid flow ensuring clear surgical field",
+        "features": ["Precise Flow Control", "Multi-liquid Compatible", "Smart Alarm System", "Easy Operation"]
+      },
+      "suction": {
+        "name": "Vacuum Suction Unit",
+        "category": "Suction Systems",
+        "description": "Efficient and reliable vacuum suction equipment keeps surgical area clean",
+        "features": ["Adjustable Suction", "Low Noise", "Easy to Clean", "Safe and Reliable"]
+      },
+      "monitor": {
+        "name": "Medical Monitor",
+        "category": "Display Systems",
+        "description": "High-definition medical monitor presents perfect images",
+        "features": ["High Resolution Display", "Wide Viewing Angle", "Eye Protection Mode", "Multiple Input Interfaces"]
+      },
+      "cart": {
+        "name": "Endoscopy Surgery Cart",
+        "category": "Supporting Equipment",
+        "description": "Modular design cart integrates all endoscopy equipment",
+        "features": ["Modular Design", "Flexible Movement", "Clean Cabling", "Customizable"]
+      }
+    }
   }
 }
