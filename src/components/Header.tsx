@@ -3,12 +3,35 @@ import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
+import { supabase } from '../lib/supabase';
+
+interface Product {
+  id: number;
+  name: string;
+  category: string;
+}
 
 export default function Header() {
   const { t, i18n } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
   const location = useLocation();
+
+  // Fetch all products from database
+  useEffect(() => {
+    async function fetchProducts() {
+      const { data } = await supabase
+        .from('products')
+        .select('id, name, category')
+        .order('category');
+
+      if (data) {
+        setProducts(data);
+      }
+    }
+    fetchProducts();
+  }, []);
 
   // Update language when URL changes
   useEffect(() => {
@@ -43,19 +66,43 @@ export default function Header() {
     return homePath + path;
   };
 
+  // Filter products based on current language
+  const isChineseMode = i18n.language === 'zh' || i18n.language.startsWith('zh');
+
+  // Filter products: only show Chinese products (with Chinese characters)
+  const filteredProducts = products.filter(product => {
+    // Check if product name contains Chinese characters
+    const hasChinese = /[\u4e00-\u9fa5]/.test(product.name);
+    return hasChinese;
+  });
+
+  // Remove duplicate names
+  const uniqueProducts = filteredProducts.reduce((acc, product) => {
+    if (!acc.find(p => p.name === product.name)) {
+      acc.push(product);
+    }
+    return acc;
+  }, [] as Product[]);
+
+  const productChildren = [
+    // All products (Chinese only)
+    { name: '全部产品', href: getNavPath('/products') },
+    // Individual products from database (no duplicates)
+    ...uniqueProducts.map(product => ({
+      name: product.name,
+      href: getNavPath(`/products/${product.id}`)
+    }))
+  ];
+
   const navigation = [
-    { name: t('common.home'), href: '/', children: [] },
+    { name: t('common.home'), href: getLocalizedHomePath(), children: [] },
     {
       name: t('common.products'),
       href: getNavPath('/products'),
-      children: [
-        { name: t('header.diagnostic'), href: getNavPath('/products/diagnostic') },
-        { name: t('header.therapeutic'), href: getNavPath('/products/therapeutic') },
-        { name: t('header.surgical'), href: getNavPath('/products/surgical') },
-        { name: t('header.monitoring'), href: getNavPath('/products/monitoring') },
-      ]
+      children: productChildren
     },
     { name: t('common.solutions'), href: getNavPath('/solutions'), children: [] },
+    { name: t('history.title') || '公司历程', href: getNavPath('/history'), children: [] },
     { name: t('common.about'), href: getNavPath('/about'), children: [] },
     { name: t('common.news'), href: getNavPath('/news'), children: [] },
     { name: t('common.contact'), href: getNavPath('/contact'), children: [] },
@@ -94,18 +141,22 @@ export default function Header() {
                 {/* Dropdown Menu */}
                 {item.children.length > 0 && (
                   <div
-                    className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0"
+                    className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 max-h-[70vh] overflow-y-auto"
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
                     <div className="py-2">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.name}
-                          to={child.href}
-                          className="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-primary-50 transition-colors duration-150"
-                        >
-                          {child.name}
-                        </Link>
+                      {item.children.map((child, index) => (
+                        child.isDivider ? (
+                          <div key={`divider-${index}`} className="my-2 border-t border-gray-100"></div>
+                        ) : (
+                          <Link
+                            key={child.name}
+                            to={child.href}
+                            className="block px-4 py-2 text-gray-700 hover:text-primary hover:bg-primary-50 transition-colors duration-150"
+                          >
+                            {child.name}
+                          </Link>
+                        )
                       ))}
                     </div>
                   </div>
@@ -160,16 +211,20 @@ export default function Header() {
                     {item.name}
                   </Link>
                   {item.children.length > 0 && (
-                    <div className="ml-4 mt-2 space-y-2">
+                    <div className="ml-4 mt-2 space-y-2 max-h-64 overflow-y-auto">
                       {item.children.map((child) => (
-                        <Link
-                          key={child.name}
-                          to={child.href}
-                          className="block px-4 py-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          {child.name}
-                        </Link>
+                        child.isDivider ? (
+                          <div key={`mobile-divider-${child.name}`} className="my-2 border-t border-gray-200"></div>
+                        ) : (
+                          <Link
+                            key={child.name}
+                            to={child.href}
+                            className="block px-4 py-2 text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg"
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
+                            {child.name}
+                          </Link>
+                        )
                       ))}
                     </div>
                   )}

@@ -5,23 +5,12 @@ import {
   Image, Video, FileText, Info, Mail, Layout, Eye, EyeOff,
   Upload, ChevronRight, ChevronDown, Menu, Bell, Search, Settings,
   Globe, Users, Building, Phone, MapPin, Check, AlertCircle,
-  ArrowLeft, ArrowRight, Move, MoreVertical, Download
+  ArrowLeft, ArrowRight, Move, MoreVertical, Download, Star
 } from 'lucide-react';
 import { supabase, uploadFile, deleteFile, STORAGE_BUCKETS } from '../lib/supabase';
 
 // Types
 
-interface Banner {
-  id: number;
-  title: string;
-  subtitle: string;
-  image_url: string;
-  mobile_image_url: string;
-  link_url: string;
-  button_text: string;
-  sort_order: number;
-  active: boolean;
-}
 
 interface Product {
   id: number;
@@ -111,7 +100,7 @@ function AdminLayout({ children, activeModule, onModuleChange }: {
 
   const modules = [
     { id: 'dashboard', label: '仪表盘', icon: Layout },
-    { id: 'banners', label: '首页轮播图', icon: Image },
+    { id: 'featured', label: '首页精选', icon: Star },
     { id: 'products', label: '产品管理', icon: Package },
     { id: 'news', label: '新闻动态', icon: FileText },
     { id: 'about', label: '关于我们', icon: Info },
@@ -189,293 +178,6 @@ function AdminLayout({ children, activeModule, onModuleChange }: {
   );
 }
 
-// Banner Management Component
-function BannerManager() {
-  const [banners, setBanners] = useState<Banner[]>([]);
-  const [editingId, setEditingId] = useState<number | null>(null);
-  const [editForm, setEditForm] = useState<Partial<Banner> | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [uploading, setUploading] = useState(false);
-
-  useEffect(() => {
-    loadBanners();
-  }, []);
-
-  async function loadBanners() {
-    const { data, error } = await supabase
-      .from('banners')
-      .select('*')
-      .order('sort_order');
-
-    if (data) setBanners(data);
-    setLoading(false);
-  }
-
-  async function handleSave() {
-    if (!editForm) return;
-    setUploading(true);
-
-    const bannerData = {
-      ...editForm,
-      sort_order: editForm.sort_order || banners.length + 1,
-      active: editForm.active ?? true,
-    };
-
-    if (editingId) {
-      await supabase.from('banners').update(bannerData).eq('id', editingId);
-    } else {
-      await supabase.from('banners').insert(bannerData);
-    }
-
-    await loadBanners();
-    setEditingId(null);
-    setEditForm(null);
-    setUploading(false);
-  }
-
-  async function handleDelete(id: number) {
-    if (confirm('确定要删除这个轮播图吗？')) {
-      await supabase.from('banners').delete().eq('id', id);
-      await loadBanners();
-    }
-  }
-
-  async function handleImageUpload(e: any, field: string) {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setUploading(true);
-    const url = await uploadFile(STORAGE_BUCKETS.IMAGES, file, 'banners');
-    if (url) {
-      setEditForm({ ...editForm, [field]: url });
-    }
-    setUploading(false);
-  }
-
-  async function handleToggleActive(id: number, currentActive: boolean) {
-    await supabase.from('banners').update({ active: !currentActive }).eq('id', id);
-    await loadBanners();
-  }
-
-  const handleEdit = (banner?: Banner) => {
-    if (banner) {
-      setEditingId(banner.id);
-      setEditForm(banner);
-    } else {
-      setEditingId(0);
-      setEditForm({
-        title: '',
-        subtitle: '',
-        image_url: '',
-        mobile_image_url: '',
-        link_url: '',
-        button_text: '了解更多',
-        sort_order: banners.length + 1,
-        active: true,
-      });
-    }
-  };
-
-  if (loading) return <div className="text-center py-12">加载中...</div>;
-
-  return (
-    <div>
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">首页轮播图管理</h2>
-        <button
-          onClick={() => handleEdit()}
-          className="flex items-center space-x-2 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700"
-        >
-          <Plus className="w-5 h-5" />
-          <span>添加轮播图</span>
-        </button>
-      </div>
-
-      {/* Edit Form */}
-      {editForm && (
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-6 border-2 border-teal-500">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-bold">{editingId ? '编辑轮播图' : '添加轮播图'}</h3>
-            <button onClick={() => { setEditingId(null); setEditForm(null); }} className="p-2 hover:bg-gray-100 rounded-lg">
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">标题</label>
-              <input
-                type="text"
-                value={editForm.title || ''}
-                onChange={(e) => setEditForm({...editForm, title: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">副标题</label>
-              <input
-                type="text"
-                value={editForm.subtitle || ''}
-                onChange={(e) => setEditForm({...editForm, subtitle: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">PC端图片 *</label>
-              <div className="flex items-center space-x-2">
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => handleImageUpload(e, 'image_url')}
-                  className="hidden"
-                  id="pc-image"
-                />
-                <label htmlFor="pc-image" className="flex items-center space-x-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg cursor-pointer">
-                  <Upload className="w-4 h-4" />
-                  <span>上传图片</span>
-                </label>
-                {editForm.image_url && (
-                  <img src={editForm.image_url} alt="Preview" className="w-16 h-16 object-cover rounded-lg" />
-                )}
-              </div>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">移动端图片</label>
-              <div className="flex items-center space-x-2">
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => handleImageUpload(e, 'mobile_image_url')}
-                  className="hidden"
-                  id="mobile-image"
-                />
-                <label htmlFor="mobile-image" className="flex items-center space-x-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg cursor-pointer">
-                  <Upload className="w-4 h-4" />
-                  <span>上传图片</span>
-                </label>
-                {editForm.mobile_image_url && (
-                  <img src={editForm.mobile_image_url} alt="Preview" className="w-16 h-16 object-cover rounded-lg" />
-                )}
-              </div>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">链接地址</label>
-              <input
-                type="text"
-                value={editForm.link_url || ''}
-                onChange={(e) => setEditForm({...editForm, link_url: e.target.value})}
-                placeholder="/products"
-                className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">按钮文字</label>
-              <input
-                type="text"
-                value={editForm.button_text || ''}
-                onChange={(e) => setEditForm({...editForm, button_text: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">排序</label>
-              <input
-                type="number"
-                value={editForm.sort_order || 1}
-                onChange={(e) => setEditForm({...editForm, sort_order: parseInt(e.target.value)})}
-                className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
-              />
-            </div>
-            <div className="flex items-center space-x-4">
-              <label className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  checked={editForm.active ?? true}
-                  onChange={(e) => setEditForm({...editForm, active: e.target.checked})}
-                  className="w-5 h-5 text-teal-600 rounded"
-                />
-                <span className="text-sm font-medium">启用</span>
-              </label>
-            </div>
-          </div>
-
-          <div className="flex justify-end space-x-3 mt-6">
-            <button
-              onClick={() => { setEditingId(null); setEditForm(null); }}
-              className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300"
-            >
-              取消
-            </button>
-            <button
-              onClick={handleSave}
-              disabled={uploading || !editForm.image_url}
-              className="flex items-center space-x-2 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 disabled:opacity-50"
-            >
-              <Save className="w-4 h-4" />
-              <span>{uploading ? '保存中...' : '保存'}</span>
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Banner List */}
-      <div className="space-y-4">
-        {banners.map((banner) => (
-          <div key={banner.id} className="bg-white rounded-xl shadow-sm overflow-hidden">
-            <div className="flex">
-              <div className="w-48 h-32 bg-gray-100 flex-shrink-0">
-                {banner.image_url && (
-                  <img src={banner.image_url} alt={banner.title} className="w-full h-full object-cover" />
-                )}
-              </div>
-              <div className="flex-1 p-4">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3 className="font-bold text-gray-900">{banner.title || '未设置标题'}</h3>
-                    <p className="text-sm text-gray-500 mt-1">{banner.subtitle || '未设置副标题'}</p>
-                    <div className="flex items-center space-x-4 mt-2">
-                      <span className="text-xs text-gray-400">排序: {banner.sort_order}</span>
-                      <span className={`text-xs px-2 py-1 rounded-full ${banner.active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}`}>
-                        {banner.active ? '已启用' : '已禁用'}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex space-x-2">
-                    <button
-                      onClick={() => handleToggleActive(banner.id, banner.active)}
-                      className={`p-2 rounded-lg ${banner.active ? 'bg-yellow-100 text-yellow-700' : 'bg-green-100 text-green-700'}`}
-                      title={banner.active ? '禁用' : '启用'}
-                    >
-                      {banner.active ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                    </button>
-                    <button
-                      onClick={() => handleEdit(banner)}
-                      className="p-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200"
-                    >
-                      <Pencil className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={() => handleDelete(banner.id)}
-                      className="p-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-        {banners.length === 0 && (
-          <div className="text-center py-12 text-gray-500">
-            <Image className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-            <p>暂无轮播图，点击上方按钮添加</p>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
 
 // Product Manager Component
 function ProductManager() {
@@ -1475,21 +1177,21 @@ function ContactManager() {
 function DashboardStats() {
   const [stats, setStats] = useState({
     products: 0,
-    banners: 0,
+    featured: 0,
     news: 0,
   });
 
   useEffect(() => {
     async function loadStats() {
-      const [products, banners, news] = await Promise.all([
+      const [products, featured, news] = await Promise.all([
         supabase.from('products').select('id', { count: 'exact', head: true }),
-        supabase.from('banners').select('id', { count: 'exact', head: true }),
+        supabase.from('homepage_featured').select('id', { count: 'exact', head: true }),
         supabase.from('news').select('id', { count: 'exact', head: true }),
       ]);
 
       setStats({
         products: products.count || 0,
-        banners: banners.count || 0,
+        featured: featured.count || 0,
         news: news.count || 0,
       });
     }
@@ -1498,7 +1200,7 @@ function DashboardStats() {
 
   const statCards = [
     { label: '产品数量', value: stats.products, icon: Package, color: 'bg-blue-500' },
-    { label: '轮播图', value: stats.banners, icon: Image, color: 'bg-purple-500' },
+    { label: '首页精选', value: stats.featured, icon: Star, color: 'bg-purple-500' },
     { label: '新闻动态', value: stats.news, icon: FileText, color: 'bg-green-500' },
   ];
 
@@ -1528,12 +1230,323 @@ function DashboardStats() {
       <div className="bg-white rounded-xl shadow-sm p-6">
         <h3 className="font-bold text-gray-900 mb-4">使用说明</h3>
         <div className="space-y-3 text-sm text-gray-600">
-          <p>• <strong>首页轮播图：</strong>管理网站首页的横幅图片，支持PC端和移动端不同图片</p>
+          <p>• <strong>首页精选：</strong>管理网站首页的精选产品展示区域</p>
           <p>• <strong>产品管理：</strong>添加、编辑、删除产品，支持上传主图、视频和图集</p>
           <p>• <strong>新闻动态：</strong>发布公司新闻、行业动态等内容</p>
           <p>• <strong>关于我们：</strong>编辑公司简介、企业愿景等内容</p>
           <p>• <strong>联系我们：</strong>管理公司联系方式信息</p>
         </div>
+      </div>
+    </div>
+  );
+}
+
+// Homepage Featured Product Manager
+function FeaturedManager() {
+  const [featured, setFeatured] = useState<any[]>([]);
+  const [products, setProducts] = useState<any[]>([]);
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editForm, setEditForm] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [uploading, setUploading] = useState(false);
+
+  useEffect(() => {
+    loadFeatured();
+    loadProducts();
+  }, []);
+
+  async function loadFeatured() {
+    const { data } = await supabase
+      .from('homepage_featured')
+      .select('*')
+      .order('sort_order');
+
+    if (data) setFeatured(data);
+    setLoading(false);
+  }
+
+  async function loadProducts() {
+    const { data } = await supabase
+      .from('products')
+      .select('id, name, category')
+      .order('name');
+    if (data) setProducts(data);
+  }
+
+  async function handleSave() {
+    if (!editForm) return;
+    setUploading(true);
+
+    const featuredData = {
+      product_id: editForm.product_id || null,
+      title: editForm.title || '',
+      subtitle: editForm.subtitle || '',
+      description: editForm.description || '',
+      image_url: editForm.image_url || '',
+      link_url: editForm.link_url || '',
+      button_text: editForm.button_text || '了解更多',
+      active: editForm.active ?? true,
+      sort_order: editForm.sort_order || 1,
+      updated_at: new Date().toISOString(),
+    };
+
+    if (editingId) {
+      await supabase.from('homepage_featured').update(featuredData).eq('id', editingId);
+    } else {
+      await supabase.from('homepage_featured').insert(featuredData);
+    }
+
+    await loadFeatured();
+    setEditingId(null);
+    setEditForm(null);
+    setUploading(false);
+  }
+
+  async function handleDelete(id: number) {
+    if (confirm('确定要删除这个精选产品吗？')) {
+      await supabase.from('homepage_featured').delete().eq('id', id);
+      await loadFeatured();
+    }
+  }
+
+  async function handleImageUpload(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+    const url = await uploadFile(STORAGE_BUCKETS.IMAGES, file, 'featured');
+    if (url) {
+      setEditForm({ ...editForm, image_url: url });
+    }
+    setUploading(false);
+  }
+
+  const handleEdit = (item?: any) => {
+    if (item) {
+      setEditingId(item.id);
+      setEditForm({ ...item });
+    } else {
+      setEditingId(0);
+      setEditForm({
+        product_id: null,
+        title: '',
+        subtitle: '',
+        description: '',
+        image_url: '',
+        link_url: '',
+        button_text: '了解更多',
+        active: true,
+        sort_order: featured.length + 1,
+      });
+    }
+  };
+
+  if (loading) return <div className="text-center py-12">加载中...</div>;
+
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-2xl font-bold text-gray-900">首页精选产品管理</h2>
+        <button
+          onClick={() => handleEdit()}
+          className="flex items-center space-x-2 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700"
+        >
+          <Plus className="w-5 h-5" />
+          <span>添加精选</span>
+        </button>
+      </div>
+
+      {/* Edit Form */}
+      {editForm && (
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-6 border-2 border-teal-500 max-h-[80vh] overflow-y-auto">
+          <div className="flex items-center justify-between mb-4 sticky top-0 bg-white pb-4 border-b">
+            <h3 className="text-lg font-bold">{editingId ? '编辑精选' : '添加精选'}</h3>
+            <button onClick={() => { setEditingId(null); setEditForm(null); }} className="p-2 hover:bg-gray-100 rounded-lg">
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          <div className="space-y-4">
+            {/* Product Selection */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">关联产品（可选）</label>
+              <select
+                value={editForm.product_id || ''}
+                onChange={(e) => setEditForm({...editForm, product_id: e.target.value ? parseInt(e.target.value) : null})}
+                className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+              >
+                <option value="">-- 不关联产品 --</option>
+                {products.map(p => (
+                  <option key={p.id} value={p.id}>{p.name} ({p.category})</option>
+                ))}
+              </select>
+              <p className="text-xs text-gray-500 mt-1">选择产品后会自动使用产品名称和图片</p>
+            </div>
+
+            {/* Title */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">标题</label>
+              <input
+                type="text"
+                value={editForm.title || ''}
+                onChange={(e) => setEditForm({...editForm, title: e.target.value})}
+                placeholder="例如：医用内窥镜系统"
+                className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
+
+            {/* Subtitle */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">副标题</label>
+              <input
+                type="text"
+                value={editForm.subtitle || ''}
+                onChange={(e) => setEditForm({...editForm, subtitle: e.target.value})}
+                placeholder="例如：高清成像精准诊断"
+                className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
+
+            {/* Description */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">描述</label>
+              <textarea
+                value={editForm.description || ''}
+                onChange={(e) => setEditForm({...editForm, description: e.target.value})}
+                rows={3}
+                placeholder="输入产品描述..."
+                className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
+
+            {/* Image */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">展示图片</label>
+              <div className="flex items-center space-x-4">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="hidden"
+                  id="featured-image"
+                />
+                <label htmlFor="featured-image" className="flex items-center space-x-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg cursor-pointer">
+                  <Upload className="w-4 h-4" />
+                  <span>上传图片</span>
+                </label>
+                {editForm.image_url && (
+                  <img src={editForm.image_url} alt="Preview" className="w-24 h-24 object-cover rounded-lg" />
+                )}
+              </div>
+            </div>
+
+            {/* Link */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">链接地址</label>
+              <input
+                type="text"
+                value={editForm.link_url || ''}
+                onChange={(e) => setEditForm({...editForm, link_url: e.target.value})}
+                placeholder="/product/1"
+                className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
+
+            {/* Button Text */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">按钮文字</label>
+              <input
+                type="text"
+                value={editForm.button_text || '了解更多'}
+                onChange={(e) => setEditForm({...editForm, button_text: e.target.value})}
+                placeholder="了解更多"
+                className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
+
+            {/* Sort Order */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">排序顺序</label>
+              <input
+                type="number"
+                value={editForm.sort_order || 1}
+                onChange={(e) => setEditForm({...editForm, sort_order: parseInt(e.target.value) || 1})}
+                min={1}
+                className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
+
+            {/* Active */}
+            <label className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                checked={editForm.active ?? true}
+                onChange={(e) => setEditForm({...editForm, active: e.target.checked})}
+                className="w-5 h-5 text-teal-600 rounded"
+              />
+              <span className="text-sm font-medium">启用</span>
+            </label>
+          </div>
+
+          <div className="flex justify-end space-x-3 mt-6">
+            <button
+              onClick={() => { setEditingId(null); setEditForm(null); }}
+              className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300"
+            >
+              取消
+            </button>
+            <button
+              onClick={handleSave}
+              disabled={uploading}
+              className="flex items-center space-x-2 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 disabled:opacity-50"
+            >
+              <Save className="w-4 h-4" />
+              <span>{uploading ? '保存中...' : '保存'}</span>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Featured List */}
+      <div className="space-y-4">
+        {featured.map((item) => (
+          <div key={item.id} className="bg-white rounded-xl shadow-sm p-4 flex items-center">
+            <div className="w-24 h-16 bg-gray-100 rounded-lg flex-shrink-0 overflow-hidden">
+              {item.image_url ? (
+                <img src={item.image_url} alt={item.title} className="w-full h-full object-cover" />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center">
+                  <Star className="w-6 h-6 text-gray-300" />
+                </div>
+              )}
+            </div>
+            <div className="flex-1 ml-4">
+              <h3 className="font-bold text-gray-900">{item.title || '未设置标题'}</h3>
+              <p className="text-sm text-gray-500">{item.subtitle || '未设置副标题'}</p>
+              <div className="flex items-center space-x-4 mt-1 text-xs text-gray-400">
+                {item.product_id && <span>关联产品: ID {item.product_id}</span>}
+                <span>排序: {item.sort_order}</span>
+                <span className={`px-2 py-0.5 rounded-full ${item.active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}`}>
+                  {item.active ? '已启用' : '已禁用'}
+                </span>
+              </div>
+            </div>
+            <div className="flex space-x-2">
+              <button onClick={() => handleEdit(item)} className="p-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200">
+                <Pencil className="w-4 h-4" />
+              </button>
+              <button onClick={() => handleDelete(item.id)} className="p-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200">
+                <Trash2 className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        ))}
+        {featured.length === 0 && !editForm && (
+          <div className="text-center py-12 text-gray-500">
+            <Star className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+            <p>暂无精选产品，点击上方按钮添加</p>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -1560,8 +1573,8 @@ export default function AdminProducts() {
     switch (activeModule) {
       case 'dashboard':
         return <DashboardStats />;
-      case 'banners':
-        return <BannerManager />;
+      case 'featured':
+        return <FeaturedManager />;
       case 'products':
         return <ProductManager />;
       case 'news':

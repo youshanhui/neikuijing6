@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -9,9 +9,27 @@ import Products from './components/Products';
 import About from './components/About';
 import Contact from './components/Contact';
 import SEO from './components/SEO';
-import AdminLogin from './components/AdminLogin';
-import AdminProducts from './components/AdminProducts';
-import ProductDetail from './components/ProductDetail';
+import Solutions from './components/Solutions';
+import NewsList from './components/NewsList';
+
+// Lazy load heavy components for code splitting
+const AdminLogin = lazy(() => import('./components/AdminLogin'));
+const AdminProducts = lazy(() => import('./components/AdminProducts'));
+const InsertSolutions = lazy(() => import('./components/InsertSolutions'));
+const InsertNews = lazy(() => import('./components/InsertNews'));
+const SolutionDetail = lazy(() => import('./components/SolutionDetail'));
+const NewsDetail = lazy(() => import('./components/NewsDetail'));
+const ProductDetail = lazy(() => import('./components/ProductDetail'));
+const History = lazy(() => import('./components/History'));
+
+// Loading fallback component
+function LoadingFallback() {
+  return (
+    <div className="flex items-center justify-center min-h-[50vh]">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+    </div>
+  );
+}
 
 function AdminLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
@@ -114,17 +132,7 @@ function NewsPage() {
   const { t } = useTranslation();
   return (
     <>
-      <div className="pt-32 pb-16 bg-gradient-to-b from-primary-50 to-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">{t('common.news')}</h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {t('page.products.description')}
-            </p>
-          </div>
-        </div>
-      </div>
-      <Products />
+      <NewsList />
       <Contact />
     </>
   );
@@ -134,17 +142,19 @@ function SolutionsPage() {
   const { t } = useTranslation();
   return (
     <>
-      <div className="pt-32 pb-16 bg-gradient-to-b from-primary-50 to-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">{t('page.solutions.title')}</h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {t('page.solutions.description')}
-            </p>
-          </div>
-        </div>
-      </div>
-      <Products />
+      <Solutions />
+      <Contact />
+    </>
+  );
+}
+
+function HistoryPage() {
+  const { t } = useTranslation();
+  return (
+    <>
+      <Suspense fallback={<LoadingFallback />}>
+        <History />
+      </Suspense>
       <Contact />
     </>
   );
@@ -168,11 +178,23 @@ function LanguageRoute({ component: Component, path }: { component: React.Compon
   return <Component />;
 }
 
+// 滚动到顶部组件
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App() {
   const { t, i18n } = useTranslation();
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-white">
         <SEO
           title={i18n.language === 'en' ? "MedTech - Professional Medical Device Manufacturer | High-end Medical Equipment Supplier" : "MedTech - 专业医疗器械制造商 | 高端医疗设备供应商"}
@@ -200,12 +222,18 @@ function App() {
             <Route path="/products/monitoring" element={<ProductsPage />} />
             <Route path="/zh/products/monitoring" element={<ProductsPage />} />
             {/* Product Detail */}
-            <Route path="/products/:id" element={<ProductDetail />} />
-            <Route path="/zh/products/:id" element={<ProductDetail />} />
+            <Route path="/products/:id" element={<Suspense fallback={<LoadingFallback />}><ProductDetail /></Suspense>} />
+            <Route path="/zh/products/:id" element={<Suspense fallback={<LoadingFallback />}><ProductDetail /></Suspense>} />
             <Route path="/solutions" element={<SolutionsPage />} />
             <Route path="/zh/solutions" element={<SolutionsPage />} />
+            <Route path="/solutions/:id" element={<Suspense fallback={<LoadingFallback />}><SolutionDetail /></Suspense>} />
+            <Route path="/zh/solutions/:id" element={<Suspense fallback={<LoadingFallback />}><SolutionDetail /></Suspense>} />
+            <Route path="/history" element={<HistoryPage />} />
+            <Route path="/zh/history" element={<HistoryPage />} />
             <Route path="/news" element={<NewsPage />} />
             <Route path="/zh/news" element={<NewsPage />} />
+            <Route path="/news/:id" element={<Suspense fallback={<LoadingFallback />}><NewsDetail /></Suspense>} />
+            <Route path="/zh/news/:id" element={<Suspense fallback={<LoadingFallback />}><NewsDetail /></Suspense>} />
             {/* English */}
             <Route path="/en" element={<HomePage />} />
             <Route path="/en/products" element={<ProductsPage />} />
@@ -215,20 +243,28 @@ function App() {
             <Route path="/en/products/therapeutic" element={<ProductsPage />} />
             <Route path="/en/products/surgical" element={<ProductsPage />} />
             <Route path="/en/products/monitoring" element={<ProductsPage />} />
-            <Route path="/en/products/:id" element={<ProductDetail />} />
+            <Route path="/en/products/:id" element={<Suspense fallback={<LoadingFallback />}><ProductDetail /></Suspense>} />
             <Route path="/en/solutions" element={<SolutionsPage />} />
+            <Route path="/en/solutions/:id" element={<Suspense fallback={<LoadingFallback />}><SolutionDetail /></Suspense>} />
+            <Route path="/en/history" element={<HistoryPage />} />
             <Route path="/en/news" element={<NewsPage />} />
-            {/* Other languages */}
+            <Route path="/en/news/:id" element={<Suspense fallback={<LoadingFallback />}><NewsDetail /></Suspense>} />
+            {/* Admin - must be before /:lang routes to avoid being captured */}
+            <Route path="/admin" element={<Suspense fallback={<LoadingFallback />}><AdminWrapper /></Suspense>} />
+            <Route path="/admin/products" element={<Suspense fallback={<LoadingFallback />}><AdminWrapper /></Suspense>} />
+            <Route path="/insert-solutions" element={<Suspense fallback={<LoadingFallback />}><InsertSolutions /></Suspense>} />
+            <Route path="/insert-news" element={<Suspense fallback={<LoadingFallback />}><InsertNews /></Suspense>} />
+            {/* Other languages - must be last */}
             <Route path="/:lang" element={<HomePage />} />
             <Route path="/:lang/products" element={<ProductsPage />} />
-            <Route path="/:lang/products/:id" element={<ProductDetail />} />
+            <Route path="/:lang/products/:id" element={<Suspense fallback={<LoadingFallback />}><ProductDetail /></Suspense>} />
             <Route path="/:lang/about" element={<AboutPage />} />
             <Route path="/:lang/contact" element={<ContactPage />} />
             <Route path="/:lang/solutions" element={<SolutionsPage />} />
+            <Route path="/:lang/solutions/:id" element={<Suspense fallback={<LoadingFallback />}><SolutionDetail /></Suspense>} />
+            <Route path="/:lang/history" element={<HistoryPage />} />
             <Route path="/:lang/news" element={<NewsPage />} />
-            {/* Admin */}
-            <Route path="/admin" element={<AdminWrapper />} />
-            <Route path="/admin/products" element={<AdminWrapper />} />
+            <Route path="/:lang/news/:id" element={<Suspense fallback={<LoadingFallback />}><NewsDetail /></Suspense>} />
           </Routes>
         </main>
         <Footer />

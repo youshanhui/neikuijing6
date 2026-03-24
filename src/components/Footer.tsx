@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Youtube, ArrowRight } from 'lucide-react';
 
@@ -10,31 +10,52 @@ const socialLinks = [
 ];
 
 export default function Footer() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const location = useLocation();
+
+  // Get localized home path based on current language
+  const getLocalizedHomePath = () => {
+    const pathParts = location.pathname.split('/');
+    const lang = pathParts[1];
+    const supportedLangs = ['en', 'zh', 'pt', 'es', 'de', 'ru', 'ko', 'it', 'fr', 'ar', 'ja', 'hi'];
+    if (supportedLangs.includes(lang)) {
+      return `/${lang}`;
+    }
+    return '/';
+  };
+
+  // Get navigation path with language prefix
+  const getNavPath = (path: string) => {
+    const homePath = getLocalizedHomePath();
+    if (homePath === '/') {
+      return path;
+    }
+    return homePath + path;
+  };
 
   const footerLinks = {
     products: [
-      { name: t('footer.productLinks.diagnostic'), href: '/products/diagnostic' },
-      { name: t('footer.productLinks.therapeutic'), href: '/products/therapeutic' },
-      { name: t('footer.productLinks.surgical'), href: '/products/surgical' },
-      { name: t('footer.productLinks.monitoring'), href: '/products/monitoring' },
+      { name: t('footer.productLinks.diagnostic'), href: getNavPath('/products/diagnostic') },
+      { name: t('footer.productLinks.therapeutic'), href: getNavPath('/products/therapeutic') },
+      { name: t('footer.productLinks.surgical'), href: getNavPath('/products/surgical') },
+      { name: t('footer.productLinks.monitoring'), href: getNavPath('/products/monitoring') },
     ],
     company: [
-      { name: t('footer.companyLinks.about'), href: '/about' },
-      { name: t('footer.companyLinks.news'), href: '/news' },
-      { name: t('footer.companyLinks.careers'), href: '/careers' },
-      { name: t('footer.companyLinks.contact'), href: '/contact' },
+      { name: t('footer.companyLinks.about'), href: getNavPath('/about') },
+      { name: t('footer.companyLinks.news'), href: getNavPath('/news') },
+      { name: t('footer.companyLinks.careers'), href: getNavPath('/careers') },
+      { name: t('footer.companyLinks.contact'), href: getNavPath('/contact') },
     ],
     support: [
-      { name: t('footer.supportLinks.technical'), href: '/support' },
-      { name: t('footer.supportLinks.afterSales'), href: '/service' },
-      { name: t('footer.supportLinks.downloads'), href: '/downloads' },
-      { name: t('footer.supportLinks.faq'), href: '/faq' },
+      { name: t('footer.supportLinks.technical'), href: getNavPath('/support') },
+      { name: t('footer.supportLinks.afterSales'), href: getNavPath('/service') },
+      { name: t('footer.supportLinks.downloads'), href: getNavPath('/downloads') },
+      { name: t('footer.supportLinks.faq'), href: getNavPath('/faq') },
     ],
     legal: [
-      { name: t('footer.legalLinks.privacy'), href: '/privacy' },
-      { name: t('footer.legalLinks.terms'), href: '/terms' },
-      { name: t('footer.legalLinks.sitemap'), href: '/sitemap' },
+      { name: t('footer.legalLinks.privacy'), href: getNavPath('/privacy') },
+      { name: t('footer.legalLinks.terms'), href: getNavPath('/terms') },
+      { name: t('footer.legalLinks.sitemap'), href: getNavPath('/sitemap') },
     ],
   };
 

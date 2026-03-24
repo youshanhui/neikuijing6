@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Check, Camera, Lightbulb, Wind, Droplets, Monitor, ShoppingCart, Phone, Mail } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { translateProductName, translateCategory, translateFeatures } from '../lib/productTranslations';
 
 interface Product {
   id: number;
@@ -186,19 +187,38 @@ export default function ProductDetail() {
     return `/${lang}`;
   };
 
-  // Get product display data (use translation keys when available)
+  // Get product display data (translate based on current language)
   const getProductData = (prod: Product) => {
+    const isEnglish = i18n.language !== 'zh' && !i18n.language.startsWith('zh');
+
     if (prod.nameKey) {
-      return {
-        name: t(prod.nameKey),
-        category: prod.categoryKey ? t(prod.categoryKey) : prod.category,
-        description: prod.descriptionKey ? t(prod.descriptionKey) : prod.description,
-        features: prod.featuresKey ? t(prod.featuresKey, { returnObjects: true }) as string[] : prod.features,
-      };
+      let name = t(prod.nameKey);
+      let category = prod.categoryKey ? t(prod.categoryKey) : prod.category;
+      let description = prod.descriptionKey ? t(prod.descriptionKey) : prod.description;
+      let features = prod.featuresKey ? t(prod.featuresKey, { returnObjects: true }) as string[] : prod.features;
+
+      // Apply translations for English
+      if (isEnglish) {
+        name = translateProductName(name, i18n.language);
+        category = translateCategory(category, i18n.language);
+        features = translateFeatures(Array.isArray(features) ? features : [], i18n.language);
+      }
+
+      return { name, category, description, features };
     }
+
+    let name = prod.name;
+    let category = prod.category;
+
+    // Apply translations for English
+    if (isEnglish) {
+      name = translateProductName(name, i18n.language);
+      category = translateCategory(category, i18n.language);
+    }
+
     return {
-      name: prod.name,
-      category: prod.category,
+      name,
+      category,
       description: prod.description,
       features: prod.features,
     };
@@ -217,7 +237,7 @@ export default function ProductDetail() {
       <div className="min-h-screen flex items-center justify-center pt-20">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">{t('productDetail.notFound')}</h2>
-          <Link to={getLocalizedHomePath() + 'products'} className="text-primary hover:underline">
+          <Link to={getLocalizedHomePath() + '/products'} className="text-primary hover:underline">
             {t('productDetail.backToProducts')}
           </Link>
         </div>
@@ -238,19 +258,19 @@ export default function ProductDetail() {
           <div className="flex items-center text-sm text-gray-500 mb-8">
             <Link to={homePath} className="hover:text-primary">{t('common.home')}</Link>
             <span className="mx-2">/</span>
-            <Link to={homePath + 'products'} className="hover:text-primary">{t('common.products')}</Link>
+            <Link to={homePath + '/products'} className="hover:text-primary">{t('common.products')}</Link>
             <span className="mx-2">/</span>
             <span className="text-gray-900">{productData.name}</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Product Image/Icon */}
-            <div className={`${product.image} rounded-3xl p-12 flex items-center justify-center`}>
-              {product.image_url ? (
+            <div className={`${product.image?.startsWith('/') || product.image?.startsWith('http') ? 'bg-gray-50' : product.image} rounded-3xl p-12 flex items-center justify-center`}>
+              {product.image?.startsWith('/') || product.image?.startsWith('http') ? (
                 <img
-                  src={product.image_url}
+                  src={product.image}
                   alt={productData.name}
-                  className="max-w-full h-auto rounded-2xl shadow-xl"
+                  className="max-w-full h-auto rounded-2xl shadow-xl object-contain max-h-96"
                 />
               ) : (
                 <div className="w-48 h-48 bg-white rounded-3xl shadow-2xl flex items-center justify-center">
@@ -287,7 +307,7 @@ export default function ProductDetail() {
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4">
                 <Link
-                  to={homePath + 'contact'}
+                  to={homePath + '/contact'}
                   className="inline-flex items-center px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-600 transition-colors"
                 >
                   <Phone className="w-5 h-5 mr-2" />
@@ -365,7 +385,7 @@ export default function ProductDetail() {
                 return (
                   <Link
                     key={relatedProduct.id}
-                    to={`${homePath}products/${relatedProduct.id}`}
+                    to={`${homePath}/products/${relatedProduct.id}`}
                     className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
                   >
                     <div className={`${relatedProduct.image} p-8`}>

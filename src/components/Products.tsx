@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { ArrowRight, Check, Camera, Lightbulb, Wind, Droplets, Monitor, ShoppingCart } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { translateProductName, translateCategory, translateFeatures } from '../lib/productTranslations';
 
 interface Product {
   id: number;
@@ -13,7 +14,7 @@ interface Product {
   description: string;
   descriptionKey?: string;
   icon: string;
-  features: string[];
+  features: string[] | string;
   featuresKey?: string;
   image: string;
   featured: boolean;
@@ -171,21 +172,50 @@ export default function Products() {
     loadProducts();
   }, []);
 
-  // Get product display data (use translation keys when available)
+  // Get product display data (translate based on current language)
   const getProductData = (product: Product) => {
+    const isEnglish = i18n.language !== 'zh' && !i18n.language.startsWith('zh');
+
     if (product.nameKey) {
-      return {
-        name: t(product.nameKey),
-        category: product.categoryKey ? t(product.categoryKey) : product.category,
-        description: product.descriptionKey ? t(product.descriptionKey) : product.description,
-        features: product.featuresKey ? t(product.featuresKey, { returnObjects: true }) as string[] : product.features,
-      };
+      let name = t(product.nameKey);
+      let category = product.categoryKey ? t(product.categoryKey) : product.category;
+      let description = product.descriptionKey ? t(product.descriptionKey) : product.description;
+      let features = product.featuresKey ? t(product.featuresKey, { returnObjects: true }) as string[] : product.features;
+
+      // Apply translations for English
+      if (isEnglish) {
+        name = translateProductName(name, i18n.language);
+        category = translateCategory(category, i18n.language);
+        features = translateFeatures(Array.isArray(features) ? features : [], i18n.language);
+      }
+
+      return { name, category, description, features };
     }
+
+    // Handle features that might be array or string
+    let features: string[] = [];
+    if (Array.isArray(product.features)) {
+      features = product.features as string[];
+    } else if (typeof product.features === 'string') {
+      // Parse string features like "{型号,SY-SHREK-UHD909,质保,八年免费保修,...}"
+      features = product.features.replace(/[{}]/g, '').split(',');
+    }
+
+    let name = product.name;
+    let category = product.category;
+
+    // Apply translations for English
+    if (isEnglish) {
+      name = translateProductName(name, i18n.language);
+      category = translateCategory(category, i18n.language);
+      features = translateFeatures(features, i18n.language);
+    }
+
     return {
-      name: product.name,
-      category: product.category,
+      name,
+      category,
       description: product.description,
-      features: product.features,
+      features,
     };
   };
 
@@ -213,32 +243,52 @@ export default function Products() {
           {displayProducts.map((product) => {
             const productData = getProductData(product);
             const IconComponent = iconMap[product.icon] || Camera;
+            // Check if product.image is a URL or a CSS class
+            const isImageUrl = product.image && (product.image.startsWith('http') || product.image.startsWith('/'));
             return (
             <div
               key={product.id}
               className="group bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
             >
-              <div className={`p-8 ${product.image}`}>
-                <div className="flex items-start justify-between mb-6">
-                  <div className="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent className="w-8 h-8 text-primary" />
+              {/* Product Image */}
+              <div className="relative h-48 bg-gradient-to-br from-primary-50 to-primary-100 overflow-hidden">
+                {isImageUrl ? (
+                  <img
+                    src={product.image}
+                    alt={productData.name}
+                    className="w-full h-full object-contain p-4"
+                    onError={(e) => {
+                      // Fallback to icon if image fails to load
+                      (e.target as HTMLImageElement).style.display = 'none';
+                      (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
+                    }}
+                  />
+                ) : null}
+                <div className={`absolute inset-0 flex items-center justify-center ${isImageUrl ? 'hidden' : ''}`}>
+                  <div className="w-20 h-20 bg-white/80 rounded-2xl shadow-lg flex items-center justify-center">
+                    <IconComponent className="w-10 h-10 text-primary" />
                   </div>
-                  <span className="px-3 py-1 bg-white rounded-full text-sm text-gray-600 font-medium">
+                </div>
+                <div className="absolute top-4 right-4">
+                  <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm text-gray-600 font-medium shadow-sm">
                     {productData.category}
                   </span>
                 </div>
+              </div>
 
+              {/* Product Info */}
+              <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
                   {productData.name}
                 </h3>
-                <p className="text-gray-600 mb-6">{productData.description}</p>
+                <p className="text-gray-600 mb-4 line-clamp-2">{productData.description}</p>
 
                 {/* Features */}
-                <div className="grid grid-cols-2 gap-2 mb-6">
-                  {productData.features.slice(0, 4).map((feature, index) => (
+                <div className="grid grid-cols-2 gap-2 mb-4">
+                  {Array.isArray(productData.features) && productData.features.slice(0, 4).map((feature, index) => (
                     <div key={index} className="flex items-center text-sm text-gray-600">
                       <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                      {feature}
+                      <span className="truncate">{String(feature)}</span>
                     </div>
                   ))}
                 </div>

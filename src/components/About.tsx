@@ -1,9 +1,43 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, Globe, Award, Users, Factory, Target } from 'lucide-react';
+import { supabase } from '../lib/supabase';
+import { useState, useEffect } from 'react';
+
+interface TimelineItem {
+  id: number;
+  year: number;
+  title: string;
+  description: string;
+  category: string;
+  active: boolean;
+}
 
 export default function About() {
   const { t } = useTranslation();
+  const [timeline, setTimeline] = useState<TimelineItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadTimeline();
+  }, []);
+
+  async function loadTimeline() {
+    try {
+      const { data } = await supabase
+        .from('history')
+        .select('*')
+        .eq('active', true)
+        .order('year', { ascending: true });
+
+      if (data && data.length > 0) {
+        setTimeline(data);
+      }
+    } catch (error) {
+      console.error('Error loading timeline:', error);
+    }
+    setLoading(false);
+  }
 
   const features = [
     {
@@ -28,12 +62,13 @@ export default function About() {
     },
   ];
 
-  const timeline = [
-    { year: '2003', event: t('about.timeline.2003') },
-    { year: '2010', event: t('about.timeline.2010') },
-    { year: '2015', event: t('about.timeline.2015') },
-    { year: '2020', event: t('about.timeline.2020') },
-    { year: '2024', event: t('about.timeline.2024') },
+  // 如果数据库没有数据，使用默认的 timeline
+  const displayTimeline = timeline.length > 0 ? timeline : [
+    { id: 1, year: 2003, title: '公司成立', description: '公司成立', category: '公司成立', active: true },
+    { id: 2, year: 2010, title: '战略发展', description: '战略发展', category: '公司成立', active: true },
+    { id: 3, year: 2015, title: 'CE认证', description: '获得CE认证', category: '荣誉资质', active: true },
+    { id: 4, year: 2020, title: '全球扩展', description: '全球客户突破1000家', category: '市场拓展', active: true },
+    { id: 5, year: 2024, title: '技术创新', description: '发布新一代智能内窥镜系统', category: '产品研发', active: true },
   ];
 
   return (
@@ -77,22 +112,28 @@ export default function About() {
               <Target className="w-5 h-5 text-primary mr-2" />
               {t('about.timeline.title')}
             </h3>
-            <div className="space-y-6">
-              {timeline.map((item, index) => (
-                <div key={index} className="flex items-start">
-                  <div className="flex flex-col items-center mr-4">
-                    <div className="w-4 h-4 bg-primary rounded-full"></div>
-                    {index < timeline.length - 1 && (
-                      <div className="w-0.5 h-12 bg-gray-200 mt-2"></div>
-                    )}
+            {loading ? (
+              <div className="flex justify-center py-8">
+                <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
+              </div>
+            ) : (
+              <div className="space-y-6">
+                {displayTimeline.map((item, index) => (
+                  <div key={item.id || index} className="flex items-start">
+                    <div className="flex flex-col items-center mr-4">
+                      <div className="w-4 h-4 bg-primary rounded-full"></div>
+                      {index < displayTimeline.length - 1 && (
+                        <div className="w-0.5 h-12 bg-gray-200 mt-2"></div>
+                      )}
+                    </div>
+                    <div>
+                      <span className="text-primary font-bold">{item.year}</span>
+                      <p className="text-gray-700">{item.title || item.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <span className="text-primary font-bold">{item.year}</span>
-                    <p className="text-gray-700">{item.event}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Right - Stats */}

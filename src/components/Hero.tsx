@@ -1,15 +1,98 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, Shield, TrendingUp, Award } from 'lucide-react';
+import { supabase, STORAGE_BUCKETS } from '../lib/supabase';
+
+// Helper function to get full image URL
+function getFullImageUrl(imagePath: string): string {
+  if (!imagePath) return '';
+  // If it's already a full URL, return as is
+  if (imagePath.startsWith('http')) return imagePath;
+  // If it's a relative path like /uploads/products/xxx, return as-is
+  // These are served from the public directory
+  return imagePath;
+}
+
+interface FeaturedProduct {
+  id: number;
+  product_id: number | null;
+  title: string;
+  subtitle: string;
+  description: string;
+  image_url: string;
+  link_url: string;
+  button_text: string;
+  active: boolean;
+}
+
+interface Product {
+  id: number;
+  name: string;
+  image: string;
+}
 
 export default function Hero() {
   const { t } = useTranslation();
+  const [featured, setFeatured] = useState<FeaturedProduct | null>(null);
+  const [productData, setProductData] = useState<Product | null>(null);
+
+  useEffect(() => {
+    loadFeatured();
+  }, []);
+
+  async function loadFeatured() {
+    try {
+      const { data, error } = await supabase
+        .from('homepage_featured')
+        .select('*')
+        .eq('active', true)
+        .order('sort_order')
+        .limit(1);
+
+      if (error) {
+        console.error('Error loading featured product:', error);
+        return;
+      }
+
+      if (data && data.length > 0) {
+        const item = data[0];
+        setFeatured(item);
+
+        // If there's a product_id, fetch the product data (name and image)
+        if (item.product_id) {
+          const { data: product, error: productError } = await supabase
+            .from('products')
+            .select('id, name, image')
+            .eq('id', item.product_id)
+            .single();
+
+          if (productError) {
+            console.error('Error fetching product:', productError);
+          } else if (product) {
+            setProductData(product);
+          }
+        }
+      }
+    } catch (err) {
+      console.error('Error loading featured product:', err);
+    }
+  }
 
   const stats = [
     { icon: Award, value: '20+', label: t('hero.yearsExperience') },
     { icon: Shield, value: '100+', label: t('hero.patents') },
     { icon: TrendingUp, value: '50+', label: t('hero.countriesServed') },
   ];
+
+  // Determine the display content
+  // 优先使用精选产品设置的标题，其次使用关联产品名称
+  const displayTitle = featured?.title || productData?.name || t('products.items.monitor.name');
+  // 优先使用精选产品上传的图片，其次使用关联产品的图片
+  const imagePath = featured?.image_url || productData?.image || '';
+  const displayImage = getFullImageUrl(imagePath);
+  const displayLink = featured?.link_url || (featured?.product_id ? `/product/${featured.product_id}` : '/products');
+  const displayButtonText = featured?.button_text || t('common.exploreProducts');
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
@@ -41,10 +124,10 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <Link
-                to="/products"
+                to={displayLink}
                 className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary-600 glow-red-hover transition-all duration-300 group"
               >
-                {t('common.exploreProducts')}
+                {displayButtonText}
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
@@ -75,14 +158,22 @@ export default function Hero() {
               {/* Main Image Card */}
               <div className="relative bg-gradient-to-br from-primary-50 to-white rounded-3xl p-8 shadow-2xl">
                 <div className="aspect-square relative">
-                  {/* Placeholder for medical device image */}
+                  {/* Product Image or Placeholder */}
                   <div className="absolute inset-0 bg-white rounded-2xl shadow-inner flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-32 h-32 mx-auto mb-4 bg-primary-100 rounded-full flex items-center justify-center">
-                        <Shield className="w-16 h-16 text-primary" />
+                    {displayImage ? (
+                      <img
+                        src={displayImage}
+                        alt={displayTitle}
+                        className="w-full h-full object-cover rounded-2xl"
+                      />
+                    ) : (
+                      <div className="text-center">
+                        <div className="w-32 h-32 mx-auto mb-4 bg-primary-100 rounded-full flex items-center justify-center">
+                          <Shield className="w-16 h-16 text-primary" />
+                        </div>
+                        <p className="text-gray-500 font-medium">{displayTitle}</p>
                       </div>
-                      <p className="text-gray-500 font-medium">{t('products.items.monitor.name')}</p>
-                    </div>
+                    )}
                   </div>
                 </div>
 
