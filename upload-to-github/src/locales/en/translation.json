@@ -1,0 +1,385 @@
+{
+  "common": {
+    "home": "Home",
+    "products": "Products",
+    "solutions": "Solutions",
+    "about": "About Us",
+    "news": "News",
+    "contact": "Contact",
+    "learnMore": "Learn More",
+    "getQuote": "Get Quote",
+    "exploreProducts": "Explore Products",
+    "viewAll": "View All",
+    "submit": "Submit",
+    "subscribe": "Subscribe",
+    "download": "Download",
+    "details": "Details"
+  },
+  "header": {
+    "trustedManufacturer": "Professional Endoscope Manufacturer",
+    "consultNow": "Consult Now",
+    "hotline": "13072150777",
+    "diagnostic": "4K Camera System",
+    "therapeutic": "Light Source",
+    "surgical": "Insufflator",
+    "monitoring": "Accessories"
+  },
+  "hero": {
+    "tagline": "Professional Endoscope Manufacturer",
+    "title": "Smart Core Breakthrough · Precision Minimally Invasive",
+    "subtitle": "Becoming the Core Force in Protecting Human Health",
+    "description": "Shanghai Shiyin Endoscope Co., Ltd. is a high-tech enterprise specializing in the R&D, production, and sales of medical endoscopes. We are committed to providing high-quality minimally invasive surgery solutions to healthcare institutions worldwide, making every surgery more precise and efficient.",
+    "yearsExperience": "Years Experience",
+    "patents": "Patents",
+    "countriesServed": "Countries Served"
+  },
+  "features": {
+    "title": "Why Choose Us",
+    "quality": {
+      "title": "Quality Assurance",
+      "description": "Products certified with CE, ISO and other international standards, with strict quality control at every production stage."
+    },
+    "global": {
+      "title": "Global Service",
+      "description": "Products exported to multiple countries and regions worldwide, providing localized support for you."
+    },
+    "support": {
+      "title": "Quick Response",
+      "description": "Professional technical support team to promptly solve all your issues."
+    },
+    "team": {
+      "title": "Professional Team",
+      "description": "Senior R&D team providing strong support for product innovation."
+    }
+  },
+  "products": {
+    "title": "Product Center",
+    "subtitle": "High-Quality Endoscope System Solutions",
+    "description": "We provide a complete endoscope system product line to meet the minimally invasive surgery needs of different departments",
+    "learnMore": "Learn More",
+    "requestInfo": "Request Information",
+    "categories": {
+      "diagnostic": "Camera System",
+      "therapeutic": "Light Source",
+      "surgical": "Insufflator",
+      "monitoring": "Accessories"
+    },
+    "items": {
+      "camera4k": {
+        "name": "4K Medical Endoscopic Camera System",
+        "category": "Camera System",
+        "description": "Adopting advanced 4K ultra-high definition technology to provide clear and delicate surgical vision, supporting multiple department applications.",
+        "features": ["4K Ultra HD", "Wide Dynamic Range", "Real Color Reproduction", "Multiple Work Modes"]
+      },
+      "ledlight": {
+        "name": "LED Medical Endoscope Cold Light Source",
+        "category": "Light Source",
+        "description": "High-brightness LED cold light source providing stable and uniform illumination with long service life.",
+        "features": ["LED Cold Light", "Adjustable Brightness", "Stable Color Temperature", "Energy Saving"]
+      },
+      "co2": {
+        "name": "CO2 Insufflator",
+        "category": "Insufflator",
+        "description": "Precisely controls abdominal pressure, providing a stable pneumoperitoneum environment to ensure surgical safety.",
+        "features": ["Precise Pressure Control", "Safe and Reliable", "Easy Operation", "Multiple Modes"]
+      },
+      "irrigation": {
+        "name": "Irrigation Pump",
+        "category": "Accessories",
+        "description": "Provides stable liquid irrigation pressure for surgery, ensuring clear surgical vision.",
+        "features": ["Controllable Flow", "Stable Pressure", "Simple Operation", "Safety Protection"]
+      },
+      "suction": {
+        "name": "Suction Irrigation Pump",
+        "category": "Accessories",
+        "description": "Achieves automatic liquid irrigation and suction during surgery, keeping the surgical field clean.",
+        "features": ["Irrigation & Suction Integration", "Adjustable Negative Pressure", "High Efficiency Filtration", "Silent Design"]
+      },
+      "monitor": {
+        "name": "Medical Monitor",
+        "category": "Display Equipment",
+        "description": "Professional-grade medical display restoring true colors, meeting high standards of operating rooms.",
+        "features": ["High Resolution Display", "Accurate Color", "Rich Interfaces", "Multiple Sizes"]
+      },
+      "cart": {
+        "name": "Workstation Cart",
+        "category": "Accessories",
+        "description": "Mobile workbench specially designed for endoscope systems, clean and beautiful, easy to operate.",
+        "features": ["Flexible Movement", "Multi-layer Design", "Cable Management", "Stable and Reliable"]
+      }
+    }
+  },
+  "solutions": {
+    "title": "Department Solutions",
+    "subtitle": "Meeting All Department Minimally Invasive Surgery Needs",
+    "description": "We provide professional endoscope solutions for different departments, making minimally invasive surgery more precise and efficient",
+    "departments": {
+      "general": {
+        "name": "General Surgery",
+        "description": "Applicable to laparoscopic surgeries such as cholecystectomy, appendectomy, and gastrointestinal surgery."
+      },
+      "thoracic": {
+        "name": "Thoracic Surgery",
+        "description": "Applicable to thoracoscopic surgeries such as lobectomy, esophageal surgery, and thymectomy."
+      },
+      "gynecology": {
+        "name": "Gynecology",
+        "description": "Applicable to myomectomy, ovarian cyst removal, ectopic pregnancy surgery, and more."
+      },
+      "ent": {
+        "name": "ENT",
+        "description": "Applicable to sinus surgery, vocal cord polyp removal, ear endoscopy, and more."
+      },
+      "orthopedics": {
+        "name": "Orthopedics",
+        "description": "Applicable to arthroscopic surgery, minimally invasive spine surgery, and more."
+      },
+      "urology": {
+        "name": "Urology",
+        "description": "Applicable to minimally invasive surgeries such as kidney stones, benign prostatic hyperplasia, and bladder tumors."
+      },
+      "proctology": {
+        "name": "Proctology",
+        "description": "Applicable to minimally invasive surgeries for hemorrhoids, anal fistula, rectal polyps, and more."
+      },
+      "aesthetic": {
+        "name": "Aesthetic Medicine",
+        "description": "Applicable to facial rejuvenation, injection aesthetics, laser treatment, and more."
+      }
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Committed to Becoming a Global Leading Medical Endoscope Supplier",
+    "description": "Shanghai Shiyin Endoscope Co., Ltd. is a high-tech enterprise specializing in the R&D, production, and sales of medical endoscopes and related equipment. With 'Smart Core Breakthrough · Precision Minimally Invasive' as our core concept, we are committed to providing high-quality minimally invasive surgery solutions to healthcare institutions worldwide.",
+    "features": {
+      "manufacturing": {
+        "title": "Advanced Manufacturing",
+        "description": "Equipped with Class 10,000 clean rooms and advanced production equipment, strictly following GMP standards."
+      },
+      "certification": {
+        "title": "Quality Assurance",
+        "description": "Products certified with CE, ISO and other international authorities for exceptional and reliable quality."
+      },
+      "global": {
+        "title": "Global Presence",
+        "description": "Products exported to multiple countries and regions worldwide, serving healthcare institutions globally."
+      },
+      "team": {
+        "title": "Professional Team",
+        "description": "Experienced R&D team and professional technical support team driving continuous innovation."
+      }
+    },
+    "timeline": {
+      "title": "Our Journey",
+      "2003": "Company Established",
+      "2010": "Company Founded",
+      "2015": "CE Certification Obtained",
+      "2018": "4K Endoscope System Launched",
+      "2020": "Global Customers Exceed 1,000",
+      "2024": "Launch of Next-Gen Smart Endoscope System"
+    },
+    "stats": {
+      "years": "Years Experience",
+      "patents": "Patents",
+      "customers": "Global Customers",
+      "countries": "Countries Served"
+    },
+    "vision": {
+      "title": "Corporate Vision",
+      "content": "Becoming the Core Force in Protecting Human Health"
+    }
+  },
+  "history": {
+    "title": "Company History",
+    "description": "Witness Our Growth and Achievements"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Professional Consulting Service Anytime",
+    "description": "Whether you have any questions or needs, our professional team is ready to serve you.",
+    "form": {
+      "title": "Send Message",
+      "name": "Your Name *",
+      "namePlaceholder": "Please enter your name",
+      "phone": "Phone Number *",
+      "phonePlaceholder": "Please enter your phone",
+      "email": "Email",
+      "emailPlaceholder": "Please enter your email",
+      "industry": "Industry",
+      "industryPlaceholder": "Select your industry",
+      "message": "Message *",
+      "messagePlaceholder": "Please describe your needs...",
+      "submit": "Send Message",
+      "industries": {
+        "hospital": "Hospital",
+        "clinic": "Clinic",
+        "distributor": "Distributor",
+        "other": "Other"
+      }
+    },
+    "info": {
+      "hotline": {
+        "title": "Hotline",
+        "content": "13072150777",
+        "description": "Mon-Fri 9:00-18:00"
+      },
+      "phone": {
+        "title": "Landline",
+        "content": "021-58189111",
+        "description": "Mon-Fri 9:00-18:00"
+      },
+      "email": {
+        "title": "Business Inquiry",
+        "content": "shiyin@shshiyin.cn",
+        "description": "Reply within 24 hours"
+      },
+      "address": {
+        "title": "Address",
+        "content": "Building 5-A & 5-B, No. 9628 Hunan Highway, Pudong New Area, Shanghai",
+        "description": "Welcome to visit"
+      },
+      "service": {
+        "title": "Service Hours",
+        "content": "Mon-Sat",
+        "description": "9:00-20:00"
+      }
+    },
+    "cta": {
+      "title": "Instant Consultation",
+      "description": "Click below to add WeChat for faster response",
+      "button": "Add WeChat"
+    },
+    "mapLoading": "Loading map..."
+  },
+  "footer": {
+    "newsletter": {
+      "title": "Subscribe to Latest News",
+      "description": "Get the latest product information, industry dynamics, and special offers",
+      "placeholder": "Enter your email",
+      "button": "Subscribe"
+    },
+    "products": "Products",
+    "company": "Company",
+    "support": "Support",
+    "legal": "Legal",
+    "productLinks": {
+      "camera4k": "4K Camera System",
+      "ledlight": "LED Cold Light Source",
+      "co2": "CO2 Insufflator",
+      "irrigation": "Irrigation Pump",
+      "suction": "Suction Pump",
+      "monitor": "Medical Monitor",
+      "cart": "Workstation Cart"
+    },
+    "companyLinks": {
+      "about": "About Us",
+      "news": "News",
+      "careers": "Careers",
+      "contact": "Contact"
+    },
+    "supportLinks": {
+      "technical": "Technical Support",
+      "afterSales": "After-Sales Service",
+      "downloads": "Downloads",
+      "faq": "FAQ"
+    },
+    "legalLinks": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "sitemap": "Sitemap"
+    },
+    "contactInfo": {
+      "phone": "13072150777",
+      "phone2": "021-58189111",
+      "email": "shiyin@shshiyin.cn",
+      "address": "Building 5-A & 5-B, No. 9628 Hunan Highway, Pudong New Area, Shanghai"
+    },
+    "copyright": "© 2024 Shanghai Shiyin Endoscope Co., Ltd. All rights reserved."
+  },
+  "seo": {
+    "title": "Shanghai Shiyin Endoscope - Professional 4K Medical Endoscopic Camera System Manufacturer",
+    "description": "Shanghai Shiyin Endoscope Co., Ltd. is a high-tech enterprise specializing in the R&D, production, and sales of 4K medical endoscopic camera systems, LED cold light sources, CO2 insufflators, and other minimally invasive surgery equipment. Products certified with CE and ISO, welcome for consultation and cooperation.",
+    "keywords": "endoscope,4K endoscope,medical endoscope,camera system,LED cold light source,CO2 insufflator,minimally invasive surgery,laparoscopy,thoracoscopy,medical equipment"
+  },
+  "page": {
+    "products": {
+      "title": "Product Center",
+      "description": "We provide a complete endoscope system product line to meet the minimally invasive surgery needs of different departments"
+    },
+    "about": {
+      "title": "About Us",
+      "description": "Learn about Shanghai Shiyin Endoscope's development history, corporate culture, and core values"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Professional consulting service anytime. Looking forward to cooperating with you"
+    },
+    "solutions": {
+      "title": "Department Solutions",
+      "description": "Providing professional endoscope solutions for different departments"
+    }
+  },
+  "productDetail": {
+    "specifications": "Technical Specifications",
+    "applications": "Applications",
+    "relatedProducts": "Related Products",
+    "getQuote": "Get Quote",
+    "learnMore": "Learn More",
+    "notFound": "Product Not Found",
+    "backToProducts": "Back to Products",
+    "contactCTA": "Learn More About This Product",
+    "contactDescription": "Our professional team is always ready to provide you with detailed product information and technical support"
+  },
+  "products": {
+    "title": "Product Center",
+    "subtitle": "Professional Endoscopy Equipment",
+    "description": "We provide a complete endoscope system product line to meet the minimally invasive surgery needs of different departments",
+    "learnMore": "Learn More",
+    "requestInfo": "Request Info",
+    "items": {
+      "camera4k": {
+        "name": "4K Ultra HD Camera System",
+        "category": "Camera Systems",
+        "description": "Advanced 4K ultra-high-definition imaging technology provides clear and detailed surgical views",
+        "features": ["4K Ultra HD Resolution", "Realistic Color Reproduction", "Low Latency Transmission", "Smart Focus"]
+      },
+      "ledlight": {
+        "name": "LED Cold Light Source",
+        "category": "Light Source Systems",
+        "description": "Energy-efficient LED cold light source provides stable and uniform illumination",
+        "features": ["Cold Light No Heat", "Adjustable Brightness", "Long Service Life", "Adjustable Color Temperature"]
+      },
+      "co2": {
+        "name": "CO2 Insufflator",
+        "category": "Insufflation Systems",
+        "description": "Precisely controls abdominal pressure providing stable surgical workspace",
+        "features": ["Precise Pressure Control", "Automatic Safety Monitoring", "Multiple Modes Available", "Low Noise Design"]
+      },
+      "irrigation": {
+        "name": "Irrigation Pump",
+        "category": "Irrigation Systems",
+        "description": "Precisely controls fluid flow ensuring clear surgical field",
+        "features": ["Precise Flow Control", "Multi-liquid Compatible", "Smart Alarm System", "Easy Operation"]
+      },
+      "suction": {
+        "name": "Vacuum Suction Unit",
+        "category": "Suction Systems",
+        "description": "Efficient and reliable vacuum suction equipment keeps surgical area clean",
+        "features": ["Adjustable Suction", "Low Noise", "Easy to Clean", "Safe and Reliable"]
+      },
+      "monitor": {
+        "name": "Medical Monitor",
+        "category": "Display Systems",
+        "description": "High-definition medical monitor presents perfect images",
+        "features": ["High Resolution Display", "Wide Viewing Angle", "Eye Protection Mode", "Multiple Input Interfaces"]
+      },
+      "cart": {
+        "name": "Endoscopy Surgery Cart",
+        "category": "Supporting Equipment",
+        "description": "Modular design cart integrates all endoscopy equipment",
+        "features": ["Modular Design", "Flexible Movement", "Clean Cabling", "Customizable"]
+      }
+    }
+  }
+}

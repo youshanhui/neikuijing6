@@ -1,0 +1,385 @@
+{
+  "common": {
+    "home": "首页",
+    "products": "产品中心",
+    "solutions": "解决方案",
+    "about": "关于我们",
+    "news": "新闻资讯",
+    "contact": "联系我们",
+    "learnMore": "了解更多",
+    "getQuote": "获取报价",
+    "exploreProducts": "探索产品",
+    "viewAll": "查看全部",
+    "submit": "提交",
+    "subscribe": "订阅",
+    "download": "下载",
+    "details": "详情"
+  },
+  "header": {
+    "trustedManufacturer": "专业内窥镜制造商",
+    "consultNow": "立即咨询",
+    "hotline": "13072150777",
+    "diagnostic": "4K摄像系统",
+    "therapeutic": "冷光源",
+    "surgical": "气腹机",
+    "monitoring": "辅助设备"
+  },
+  "hero": {
+    "tagline": "专业内窥镜制造商",
+    "title": "智芯突破 · 智精微创",
+    "subtitle": "成为守护人类健康的核心力量",
+    "description": "上海世音内窥镜有限公司是一家专业从事医用内窥镜研发、生产和销售的高新技术企业。我们致力于为全球医疗机构提供高品质的微创手术解决方案，让每一台手术都更加精准高效。",
+    "yearsExperience": "年行业经验",
+    "patents": "专利技术",
+    "countriesServed": "国家服务"
+  },
+  "features": {
+    "title": "选择我们的理由",
+    "quality": {
+      "title": "品质保证",
+      "description": "产品通过CE、ISO等国际权威认证，严格把控每一个生产环节"
+    },
+    "global": {
+      "title": "全球服务",
+      "description": "产品远销全球多个国家和地区，为您提供本地化支持"
+    },
+    "support": {
+      "title": "快速响应",
+      "description": "专业技术支持团队，及时解决您的各类问题"
+    },
+    "team": {
+      "title": "专业团队",
+      "description": "资深研发团队，为产品创新提供强力支撑"
+    }
+  },
+  "products": {
+    "title": "产品中心",
+    "subtitle": "高品质内窥镜系统解决方案",
+    "description": "我们提供完整的内窥镜系统产品线，满足不同科室的微创手术需求",
+    "learnMore": "了解更多",
+    "requestInfo": "索取资料",
+    "categories": {
+      "diagnostic": "摄像系统",
+      "therapeutic": "光源设备",
+      "surgical": "气腹机",
+      "monitoring": "辅助设备"
+    },
+    "items": {
+      "camera4k": {
+        "name": "4K医用内窥镜摄像系统",
+        "category": "摄像系统",
+        "description": "采用先进的4K超高清技术，提供清晰细腻的手术视野，支持多种科室应用",
+        "features": ["4K超高清画质", "宽动态范围", "色彩还原真实", "多种工作模式"]
+      },
+      "ledlight": {
+        "name": "LED医用内窥镜冷光源",
+        "category": "光源设备",
+        "description": "高亮度LED冷光源，提供稳定均匀的照明效果，使用寿命长",
+        "features": ["LED冷光源", "亮度可调", "色温稳定", "节能环保"]
+      },
+      "co2": {
+        "name": "CO2气腹机",
+        "category": "气腹机",
+        "description": "精确控制腹腔内气压，提供稳定的气腹环境，保障手术安全",
+        "features": ["精确控压", "安全可靠", "操作简便", "多种模式"]
+      },
+      "irrigation": {
+        "name": "灌注泵",
+        "category": "辅助设备",
+        "description": "为手术提供稳定的液体灌注压力，保证手术视野清晰",
+        "features": ["流量可控", "压力稳定", "操作简单", "安全保护"]
+      },
+      "suction": {
+        "name": "冲吸泵",
+        "category": "辅助设备",
+        "description": "实现手术过程中的液体自动冲洗和吸引，保持手术野清洁",
+        "features": ["冲洗吸引一体", "负压可调", "高效过滤", "静音设计"]
+      },
+      "monitor": {
+        "name": "医用监视器",
+        "category": "显示设备",
+        "description": "专业级医用显示器，还原真实色彩，满足手术室高标准要求",
+        "features": ["高分辨率显示", "色彩准确", "接口丰富", "多种尺寸"]
+      },
+      "cart": {
+        "name": "工作站台车",
+        "category": "辅助设备",
+        "description": "专为内窥镜系统设计的移动工作台，整洁美观，便于操作",
+        "features": ["移动灵活", "多层设计", "线缆管理", "稳定可靠"]
+      }
+    }
+  },
+  "solutions": {
+    "title": "科室解决方案",
+    "subtitle": "全方位满足各科室微创手术需求",
+    "description": "我们为不同科室提供专业的内窥镜解决方案，让微创手术更加精准高效",
+    "departments": {
+      "general": {
+        "name": "普外科",
+        "description": "适用于胆囊切除、阑尾切除、胃肠手术等腹腔镜手术"
+      },
+      "thoracic": {
+        "name": "胸外科",
+        "description": "适用于肺叶切除、食管手术、胸腺切除等胸腔镜手术"
+      },
+      "gynecology": {
+        "name": "妇科",
+        "description": "适用于子宫肌瘤切除、卵巢囊肿剔除、宫外孕手术等"
+      },
+      "ent": {
+        "name": "耳鼻喉科",
+        "description": "适用于鼻窦炎手术、声带息肉切除、耳内镜手术等"
+      },
+      "orthopedics": {
+        "name": "骨科",
+        "description": "适用于关节镜手术、脊柱微创手术等"
+      },
+      "urology": {
+        "name": "泌尿外科",
+        "description": "适用于肾结石、前列腺增生、膀胱肿瘤等微创手术"
+      },
+      "proctology": {
+        "name": "肛肠科",
+        "description": "适用于痔疮、肛瘘、直肠息肉等微创手术"
+      },
+      "aesthetic": {
+        "name": "美容科",
+        "description": "适用于面部年轻化、注射美容、激光治疗等"
+      }
+    }
+  },
+  "about": {
+    "title": "关于我们",
+    "subtitle": "致力于成为全球领先的医用内窥镜供应商",
+    "description": "上海世音内窥镜有限公司是一家专业从事医用内窥镜及相关设备研发、生产和销售的高新技术企业。公司以「智芯突破·智精微创」为核心理念，致力于为全球医疗机构提供高品质的微创手术解决方案。",
+    "features": {
+      "manufacturing": {
+        "title": "先进制造",
+        "description": "拥有万级洁净车间和先进的生产设备，严格遵循GMP标准"
+      },
+      "certification": {
+        "title": "品质保证",
+        "description": "产品通过CE、ISO等国际权威认证，品质卓越可靠"
+      },
+      "global": {
+        "title": "全球布局",
+        "description": "产品远销全球多个国家和地区，服务全球医疗机构"
+      },
+      "team": {
+        "title": "专业团队",
+        "description": "拥有资深研发团队和专业的技术支持团队，持续创新"
+      }
+    },
+    "timeline": {
+      "title": "发展历程",
+      "2003": "公司创立",
+      "2010": "公司成立",
+      "2015": "获得CE认证",
+      "2018": "4K内窥镜系统上市",
+      "2020": "全球客户突破1000家",
+      "2024": "发布新一代智能内窥镜系统"
+    },
+    "stats": {
+      "years": "年行业经验",
+      "patents": "专利技术",
+      "customers": "全球客户",
+      "countries": "国家服务"
+    },
+    "vision": {
+      "title": "企业愿景",
+      "content": "成为守护人类健康的核心力量"
+    }
+  },
+  "history": {
+    "title": "公司历程",
+    "description": "见证我们的成长与成就"
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "随时为您提供专业咨询服务",
+    "description": "无论您有任何疑问或需求，我们的专业团队都将竭诚为您服务",
+    "form": {
+      "title": "在线留言",
+      "name": "您的姓名 *",
+      "namePlaceholder": "请输入您的姓名",
+      "phone": "联系电话 *",
+      "phonePlaceholder": "请输入您的电话",
+      "email": "电子邮箱",
+      "emailPlaceholder": "请输入您的邮箱",
+      "industry": "所属行业",
+      "industryPlaceholder": "请选择所属行业",
+      "message": "留言内容 *",
+      "messagePlaceholder": "请描述您的需求...",
+      "submit": "提交留言",
+      "industries": {
+        "hospital": "医院",
+        "clinic": "诊所",
+        "distributor": "经销商",
+        "other": "其他"
+      }
+    },
+    "info": {
+      "hotline": {
+        "title": "咨询热线",
+        "content": "13072150777",
+        "description": "周一至周五 9:00-18:00"
+      },
+      "phone": {
+        "title": "固定电话",
+        "content": "021-58189111",
+        "description": "周一至周五 9:00-18:00"
+      },
+      "email": {
+        "title": "商务合作",
+        "content": "shiyin@shshiyin.cn",
+        "description": "24小时内回复"
+      },
+      "address": {
+        "title": "公司地址",
+        "content": "上海市浦东新区沪南公路9628号5-A幢、5-B幢",
+        "description": "欢迎实地参观"
+      },
+      "service": {
+        "title": "服务时间",
+        "content": "周一至周六",
+        "description": "9:00-20:00"
+      }
+    },
+    "cta": {
+      "title": "即时咨询",
+      "description": "点击下方按钮添加微信好友，获取更快响应",
+      "button": "添加微信咨询"
+    },
+    "mapLoading": "地图加载中..."
+  },
+  "footer": {
+    "newsletter": {
+      "title": "订阅最新资讯",
+      "description": "获取最新产品信息、行业动态和优惠活动",
+      "placeholder": "输入您的邮箱",
+      "button": "订阅"
+    },
+    "products": "产品中心",
+    "company": "关于我们",
+    "support": "服务支持",
+    "legal": "法律信息",
+    "productLinks": {
+      "camera4k": "4K摄像系统",
+      "ledlight": "LED冷光源",
+      "co2": "CO2气腹机",
+      "irrigation": "灌注泵",
+      "suction": "冲吸泵",
+      "monitor": "医用监视器",
+      "cart": "工作站台车"
+    },
+    "companyLinks": {
+      "about": "关于我们",
+      "news": "新闻资讯",
+      "careers": "招贤纳士",
+      "contact": "联系我们"
+    },
+    "supportLinks": {
+      "technical": "技术支持",
+      "afterSales": "售后服务",
+      "downloads": "下载中心",
+      "faq": "常见问题"
+    },
+    "legalLinks": {
+      "privacy": "隐私政策",
+      "terms": "服务条款",
+      "sitemap": "网站地图"
+    },
+    "contactInfo": {
+      "phone": "13072150777",
+      "phone2": "021-58189111",
+      "email": "shiyin@shshiyin.cn",
+      "address": "上海市浦东新区沪南公路9628号5-A幢、5-B幢"
+    },
+    "copyright": "© 2024 上海世音内窥镜有限公司. All rights reserved."
+  },
+  "seo": {
+    "title": "上海世音内窥镜 - 专业4K医用内窥镜摄像系统制造商",
+    "description": "上海世音内窥镜有限公司是一家专业从事4K医用内窥镜摄像系统、LED冷光源、CO2气腹机等微创手术设备研发、生产和销售的高新技术企业。产品通过CE、ISO认证，欢迎咨询合作。",
+    "keywords": "内窥镜,4K内窥镜,医用内窥镜,摄像系统,LED冷光源,CO2气腹机,微创手术,腹腔镜,胸腔镜,医用设备"
+  },
+  "page": {
+    "products": {
+      "title": "产品中心",
+      "description": "我们提供完整的内窥镜系统产品线，满足不同科室的微创手术需求"
+    },
+    "about": {
+      "title": "关于我们",
+      "description": "了解上海世音内窥镜的发展历程、企业文化和核心价值观"
+    },
+    "contact": {
+      "title": "联系我们",
+      "description": "随时为您提供专业咨询服务，期待与您的合作"
+    },
+    "solutions": {
+      "title": "科室解决方案",
+      "description": "为不同科室提供专业的内窥镜解决方案"
+    }
+  },
+  "productDetail": {
+    "specifications": "技术规格",
+    "applications": "应用领域",
+    "relatedProducts": "相关产品",
+    "getQuote": "获取报价",
+    "learnMore": "了解更多",
+    "notFound": "产品未找到",
+    "backToProducts": "返回产品列表",
+    "contactCTA": "了解更多产品信息",
+    "contactDescription": "我们的专业团队随时为您提供详细的产品咨询和技术支持"
+  },
+  "products": {
+    "title": "产品中心",
+    "subtitle": "专业内窥镜设备",
+    "description": "我们提供完整的内窥镜系统产品线，满足不同科室的微创手术需求",
+    "learnMore": "了解更多",
+    "requestInfo": "立即咨询",
+    "items": {
+      "camera4k": {
+        "name": "4K超高清摄像系统",
+        "category": "摄像系统",
+        "description": "采用先进的4K超高清成像技术，提供清晰细腻的手术视野",
+        "features": ["4K超高清分辨率", "色彩还原真实", "低延迟传输", "智能对焦"]
+      },
+      "ledlight": {
+        "name": "LED冷光源",
+        "category": "光源系统",
+        "description": "高效节能的LED冷光源，提供稳定均匀的照明",
+        "features": ["冷光源不发热", "亮度可调节", "使用寿命长", "色温可调"]
+      },
+      "co2": {
+        "name": "CO2气腹机",
+        "category": "气腹系统",
+        "description": "精确控制腹腔压力，提供稳定的手术操作空间",
+        "features": ["压力精确控制", "自动安全监测", "多种模式可选", "低噪音设计"]
+      },
+      "irrigation": {
+        "name": "灌注泵",
+        "category": "灌注系统",
+        "description": "精确控制液体流量，确保手术视野清晰",
+        "features": ["流量精确控制", "多种液体兼容", "智能报警系统", "操作简便"]
+      },
+      "suction": {
+        "name": "负压吸引器",
+        "category": "吸引系统",
+        "description": "高效可靠的负压吸引设备，保持手术区域清洁",
+        "features": ["吸力可调节", "噪音低", "易于清洁", "安全可靠"]
+      },
+      "monitor": {
+        "name": "医用监视器",
+        "category": "显示系统",
+        "description": "高清晰度医用监视器，呈现完美图像",
+        "features": ["高分辨率显示", "广视角设计", "护眼模式", "多种输入接口"]
+      },
+      "cart": {
+        "name": "内镜手术推车",
+        "category": "配套设备",
+        "description": "模块化设计推车，集成所有内镜设备",
+        "features": ["模块化设计", "移动灵活", "布线整洁", "可定制"]
+      }
+    }
+  }
+}
