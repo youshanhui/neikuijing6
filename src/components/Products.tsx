@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { ArrowRight, Check, Camera, Lightbulb, Wind, Droplets, Monitor, ShoppingCart } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import { supabase, getProductImageUrl } from '../lib/supabase';
 import { translateProductName, translateCategory, translateFeatures } from '../lib/productTranslations';
 
 interface Product {
@@ -17,6 +17,7 @@ interface Product {
   features: string[] | string;
   featuresKey?: string;
   image: string;
+  image_url?: string;
   featured: boolean;
 }
 
@@ -133,6 +134,8 @@ const defaultProducts = [
 export default function Products() {
   const { t, i18n } = useTranslation();
   const [products, setProducts] = useState<Product[]>([]);
+  // Add timestamp state for cache-busting images
+  const [imageVersion] = useState(() => Date.now());
 
   // Get localized product path
   const getProductPath = (productId: number) => {
@@ -243,8 +246,12 @@ export default function Products() {
           {displayProducts.map((product) => {
             const productData = getProductData(product);
             const IconComponent = iconMap[product.icon] || Camera;
-            // Check if product.image is a URL or a CSS class
-            const isImageUrl = product.image && (product.image.startsWith('http') || product.image.startsWith('/'));
+            // Prefer image_url from database, fallback to image
+            const imagePath = product.image_url || product.image;
+            const imageUrl = getProductImageUrl(imagePath);
+            const isImageUrl = !!imageUrl;
+            // Add cache-busting parameter to force browser to load fresh images
+            const imageSrc = imageUrl ? `${imageUrl}${imageUrl.includes('?') ? '&' : '?'}v=${imageVersion}` : '';
             return (
             <div
               key={product.id}
@@ -254,9 +261,11 @@ export default function Products() {
               <div className="relative h-48 bg-gradient-to-br from-primary-50 to-primary-100 overflow-hidden">
                 {isImageUrl ? (
                   <img
-                    src={product.image}
+                    src={imageSrc}
                     alt={productData.name}
                     className="w-full h-full object-contain p-4"
+                    loading="lazy"
+                    decoding="async"
                     onError={(e) => {
                       // Fallback to icon if image fails to load
                       (e.target as HTMLImageElement).style.display = 'none';

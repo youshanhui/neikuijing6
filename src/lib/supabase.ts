@@ -12,6 +12,34 @@ export const STORAGE_BUCKETS = {
   DOCUMENTS: 'documents',
 };
 
+// Supabase Storage base URL for public files
+const SUPABASE_STORAGE_URL = 'https://nawfbpigrewriunvzqbn.supabase.co/storage/v1/object/public';
+
+// Get public URL for a file in Supabase Storage
+export function getStoragePublicUrl(bucket: string, filePath: string): string {
+  return `${SUPABASE_STORAGE_URL}/${bucket}/${filePath}`;
+}
+
+// Convert product image path to full URL
+// Handles both local paths (/uploads/...) and Supabase Storage paths
+export function getProductImageUrl(imagePath: string | null | undefined): string {
+  if (!imagePath) return '';
+
+  // Already a full URL
+  if (imagePath.startsWith('http')) return imagePath;
+
+  // Local path in public directory
+  if (imagePath.startsWith('/uploads/')) return imagePath;
+
+  // Supabase Storage path (e.g., "products/xxx.png")
+  if (imagePath.startsWith('products/') || imagePath.includes('/')) {
+    return getStoragePublicUrl(STORAGE_BUCKETS.IMAGES, imagePath);
+  }
+
+  // Default: assume it's in products folder
+  return getStoragePublicUrl(STORAGE_BUCKETS.IMAGES, `products/${imagePath}`);
+}
+
 // Upload file to Supabase Storage
 export async function uploadFile(
   bucket: string,

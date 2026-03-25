@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Check, Camera, Lightbulb, Wind, Droplets, Monitor, ShoppingCart, Phone, Mail } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import { supabase, getProductImageUrl } from '../lib/supabase';
 import { translateProductName, translateCategory, translateFeatures } from '../lib/productTranslations';
 
 interface Product {
@@ -152,6 +152,8 @@ export default function ProductDetail() {
   const { t, i18n } = useTranslation();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
+  // Add timestamp state for cache-busting images
+  const [imageVersion] = useState(() => Date.now());
 
   useEffect(() => {
     async function loadProduct() {
@@ -248,6 +250,35 @@ export default function ProductDetail() {
     const productData = getProductData(product);
   const IconComponent = iconMap[product.icon] || Camera;
   const homePath = getLocalizedHomePath();
+  // Prefer image_url from database, fallback to image
+  const imagePath = product.image_url || product.image;
+  // Get full image URL and add cache-busting parameter
+  const productImageUrl = getProductImageUrl(imagePath);
+  const productImageSrc = productImageUrl
+    ? `${productImageUrl}${productImageUrl.includes('?') ? '&' : '?'}v=${imageVersion}`
+    : '';
+
+  // Helper function to safely convert specifications to array
+  const getSpecificationsArray = () => {
+    if (!product.specifications) return [];
+    if (typeof product.specifications === 'string') {
+      return product.specifications.split('\n').filter(line => line.trim());
+    }
+    // Handle case where it might be an array or object
+    if (Array.isArray(product.specifications)) return product.specifications;
+    return [];
+  };
+
+  // Helper function to safely convert applications to array
+  const getApplicationsArray = () => {
+    if (!product.applications) return [];
+    if (typeof product.applications === 'string') {
+      return product.applications.split('\n').filter(app => app.trim());
+    }
+    // Handle case where it might be an array or object
+    if (Array.isArray(product.applications)) return product.applications;
+    return [];
+  };
 
   return (
     <div className="bg-white min-h-screen">
@@ -265,12 +296,14 @@ export default function ProductDetail() {
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Product Image/Icon */}
-            <div className={`${product.image?.startsWith('/') || product.image?.startsWith('http') ? 'bg-gray-50' : product.image} rounded-3xl p-12 flex items-center justify-center`}>
-              {product.image?.startsWith('/') || product.image?.startsWith('http') ? (
+            <div className={`${productImageSrc ? 'bg-gray-50' : product.image} rounded-3xl p-12 flex items-center justify-center`}>
+              {productImageSrc ? (
                 <img
-                  src={product.image}
+                  src={productImageSrc}
                   alt={productData.name}
                   className="max-w-full h-auto rounded-2xl shadow-xl object-contain max-h-96"
+                  loading="eager"
+                  decoding="async"
                 />
               ) : (
                 <div className="w-48 h-48 bg-white rounded-3xl shadow-2xl flex items-center justify-center">
@@ -327,13 +360,13 @@ export default function ProductDetail() {
       </div>
 
       {/* Specifications Section */}
-      {product.specifications && (
+      {getSpecificationsArray().length > 0 && (
         <div className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">{t('productDetail.specifications')}</h2>
             <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-8">
               <div className="grid gap-4">
-                {product.specifications.split('\n').map((line, index) => {
+                {getSpecificationsArray().map((line: string, index: number) => {
                   const [key, ...valueParts] = line.split(':');
                   const value = valueParts.join(':');
                   if (key && value) {
@@ -353,13 +386,13 @@ export default function ProductDetail() {
       )}
 
       {/* Applications Section */}
-      {product.applications && (
+      {getApplicationsArray().length > 0 && (
         <div className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">{t('productDetail.applications')}</h2>
             <div className="max-w-3xl mx-auto">
               <div className="grid md:grid-cols-2 gap-4">
-                {product.applications.split('\n').map((app, index) => (
+                {getApplicationsArray().map((app: string, index: number) => (
                   <div key={index} className="flex items-center bg-primary-50 rounded-xl p-4">
                     <div className="w-3 h-3 bg-primary rounded-full mr-3"></div>
                     <span className="text-gray-700 font-medium">{app}</span>

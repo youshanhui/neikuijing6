@@ -2,17 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight, Shield, TrendingUp, Award } from 'lucide-react';
-import { supabase, STORAGE_BUCKETS } from '../lib/supabase';
-
-// Helper function to get full image URL
-function getFullImageUrl(imagePath: string): string {
-  if (!imagePath) return '';
-  // If it's already a full URL, return as is
-  if (imagePath.startsWith('http')) return imagePath;
-  // If it's a relative path like /uploads/products/xxx, return as-is
-  // These are served from the public directory
-  return imagePath;
-}
+import { supabase, getProductImageUrl } from '../lib/supabase';
 
 interface FeaturedProduct {
   id: number;
@@ -30,12 +20,15 @@ interface Product {
   id: number;
   name: string;
   image: string;
+  image_url?: string;
 }
 
 export default function Hero() {
   const { t } = useTranslation();
   const [featured, setFeatured] = useState<FeaturedProduct | null>(null);
   const [productData, setProductData] = useState<Product | null>(null);
+  // Add timestamp state for cache-busting images
+  const [imageVersion] = useState(() => Date.now());
 
   useEffect(() => {
     loadFeatured();
@@ -89,8 +82,10 @@ export default function Hero() {
   // 优先使用精选产品设置的标题，其次使用关联产品名称
   const displayTitle = featured?.title || productData?.name || t('products.items.monitor.name');
   // 优先使用精选产品上传的图片，其次使用关联产品的图片
-  const imagePath = featured?.image_url || productData?.image || '';
-  const displayImage = getFullImageUrl(imagePath);
+  const imagePath = featured?.image_url || productData?.image_url || productData?.image || '';
+  const baseImageUrl = getProductImageUrl(imagePath);
+  // Add cache-busting parameter to force browser to load fresh images
+  const displayImage = baseImageUrl ? `${baseImageUrl}${baseImageUrl.includes('?') ? '&' : '?'}v=${imageVersion}` : '';
   const displayLink = featured?.link_url || (featured?.product_id ? `/product/${featured.product_id}` : '/products');
   const displayButtonText = featured?.button_text || t('common.exploreProducts');
 
@@ -165,6 +160,8 @@ export default function Hero() {
                         src={displayImage}
                         alt={displayTitle}
                         className="w-full h-full object-cover rounded-2xl"
+                        loading="eager"
+                        decoding="async"
                       />
                     ) : (
                       <div className="text-center">
